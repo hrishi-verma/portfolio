@@ -15,7 +15,6 @@ export default function Hero() {
 
   return (
     <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
-      <HeroArt />
       {/* Gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-gray-950 to-purple-900/20" />
 
@@ -57,12 +56,21 @@ export default function Hero() {
           </a>
         </div>
 
-        <a
-          href="#about"
-          className="inline-block px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-medium hover:shadow-lg hover:shadow-purple-500/50 transition-all hover:scale-105"
-        >
-          Learn More
-        </a>
+        <div className="flex flex-col sm:flex-row gap-4 items-center">
+          <a
+            href="#contact"
+            className="inline-block px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-medium hover:shadow-lg hover:shadow-purple-500/50 transition-all hover:scale-105"
+          >
+            Get in Touch
+          </a>
+          <a
+            href="/resume.pdf"
+            download
+            className="inline-block px-8 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-full font-medium border border-gray-600 hover:border-blue-500 transition-all hover:scale-105"
+          >
+            Download Resume
+          </a>
+        </div>
       </div>
 
       {/* Scroll indicator */}

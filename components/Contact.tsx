@@ -9,11 +9,33 @@ export default function Contact() {
     email: '',
     message: ''
   });
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic here
-    console.log('Form submitted:', formData);
+    setStatus('submitting');
+
+    try {
+      const response = await fetch("https://formspree.io/f/mykzjdpw", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 5000);
+      }
+    } catch (error) {
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
   };
 
   return (
@@ -66,10 +88,12 @@ export default function Contact() {
               <input
                 type="text"
                 placeholder="Your Name"
+                name="name"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
                 required
+                disabled={status === 'submitting'}
               />
             </div>
 
@@ -77,30 +101,50 @@ export default function Contact() {
               <input
                 type="email"
                 placeholder="Your Email"
+                name="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
                 required
+                disabled={status === 'submitting'}
               />
             </div>
 
             <div>
               <textarea
                 placeholder="Your Message"
+                name="message"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 rows={5}
-                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors resize-none"
+                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors resize-none"
                 required
+                disabled={status === 'submitting'}
               />
             </div>
 
             <button
               type="submit"
-              className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/50 transition-all hover:scale-105 flex items-center justify-center gap-2"
+              disabled={status === 'submitting' || status === 'success'}
+              className={`w-full px-6 py-3 rounded-lg font-medium transition-all flex items-center justify-center gap-2 ${status === 'success'
+                  ? 'bg-green-600 text-white cursor-default'
+                  : status === 'error'
+                    ? 'bg-red-600 text-white'
+                    : 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:shadow-lg hover:shadow-purple-500/50 hover:scale-105'
+                }`}
             >
-              <Send className="w-4 h-4" />
-              Send Message
+              {status === 'submitting' ? (
+                <span>Sending...</span>
+              ) : status === 'success' ? (
+                <span>Message Sent successfully!</span>
+              ) : status === 'error' ? (
+                <span>Error - Try Again</span>
+              ) : (
+                <>
+                  <Send className="w-4 h-4" />
+                  <span>Send Message</span>
+                </>
+              )}
             </button>
           </form>
         </div>

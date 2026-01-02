@@ -13,7 +13,7 @@ export default function HeroArt() {
     if (!ctx) return;
 
     let resizeTimeout: NodeJS.Timeout;
-    
+
     // Set canvas size
     const setSize = () => {
       canvas.width = window.innerWidth;
@@ -51,8 +51,8 @@ export default function HeroArt() {
         y: Math.random() * canvas.height,
         vx: (Math.random() - 0.5) * 0.5,
         vy: (Math.random() - 0.5) * 0.5,
-        size: Math.random() * 2 + 1,
-        color: `hsl(${Math.random() * 60 + 200}, 70%, 50%)` // Blue to Purple hues
+        size: Math.random() * 1.5 + 0.5,
+        color: `hsl(${Math.random() * 60 + 200}, 60%, 40%)` // Subtle Blue to Purple hues
       });
     }
 
@@ -71,7 +71,7 @@ export default function HeroArt() {
     let animationId: number;
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
+
       // Update and draw particles
       particles.forEach((p, i) => {
         // Move
@@ -94,23 +94,23 @@ export default function HeroArt() {
         const distinctMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
 
         if (distinctMouse < mouseDistance) {
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(100, 200, 255, ${1 - distinctMouse / mouseDistance})`;
-            ctx.lineWidth = 1;
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(mouseX, mouseY);
-            ctx.stroke();
-            
-            // Subtle attraction to mouse
-            p.vx += dxMouse * 0.0001;
-            p.vy += dyMouse * 0.0001;
-            
-            // Limit speed
-            const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
-            if(speed > 2) {
-                p.vx = (p.vx / speed) * 2;
-                p.vy = (p.vy / speed) * 2;
-            }
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(100, 180, 255, ${0.3 * (1 - distinctMouse / mouseDistance)})`;
+          ctx.lineWidth = 1;
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(mouseX, mouseY);
+          ctx.stroke();
+
+          // Subtle attraction to mouse
+          p.vx += dxMouse * 0.0001;
+          p.vy += dyMouse * 0.0001;
+
+          // Limit speed
+          const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+          if (speed > 2) {
+            p.vx = (p.vx / speed) * 2;
+            p.vy = (p.vy / speed) * 2;
+          }
         }
 
         // Connect to other particles
@@ -122,7 +122,7 @@ export default function HeroArt() {
 
           if (dist < connectionDistance) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(100, 100, 255, ${0.15 * (1 - dist / connectionDistance)})`;
+            ctx.strokeStyle = `rgba(100, 120, 200, ${0.08 * (1 - dist / connectionDistance)})`;
             ctx.lineWidth = 0.5;
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
@@ -144,9 +144,9 @@ export default function HeroArt() {
   }, []);
 
   return (
-    <canvas 
-      ref={canvasRef} 
-      className="absolute inset-0 z-0 pointer-events-none"
+    <canvas
+      ref={canvasRef}
+      className="fixed inset-0 z-0 pointer-events-none"
       style={{ background: 'transparent' }}
     />
   );

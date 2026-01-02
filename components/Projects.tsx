@@ -7,10 +7,10 @@ export default function Projects() {
       highlights: ["26% size reduction", "486 recurring patterns identified"]
     },
     {
-      title: "Interactive D3 Dashboard",
-      description: "Created an interactive facet for D3 dashboard with real-time motif filtering, cluster comparison, and dynamic graph exploration of 4,000+ edges for research insights.",
-      tech: ["D3.js", "JavaScript", "Data Visualization", "Interactive UI"],
-      highlights: ["4,000+ edges processed", "Real-time filtering"]
+      title: "InsightHub",
+      description: "Architected a real-time log monitoring system using Kafka, Node.js, and Python. Integrated an ML engine with Isolation Forest models to detect anomalies and latency spikes in real-time, visualizing data on a Next.js dashboard.",
+      tech: ["Kafka", "Node.js", "Python", "Next.js", "PostgreSQL", "Docker", "scikit-learn"],
+      highlights: ["Real-time Anomaly Detection", "Scalable Architecture"]
     },
     {
       title: "Virtual Self-Driving Car",
@@ -30,24 +30,24 @@ export default function Projects() {
     <section id="projects" className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-white mb-12 text-center">Featured Projects</h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project, idx) => (
-            <div 
+            <div
               key={idx}
               className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-purple-500/50 transition-all hover:transform hover:scale-105 group"
             >
               <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
                 {project.title}
               </h3>
-              
+
               <p className="text-gray-300 mb-4 leading-relaxed">
                 {project.description}
               </p>
-              
+
               <div className="mb-4">
                 {project.highlights.map((highlight, hIdx) => (
-                  <span 
+                  <span
                     key={hIdx}
                     className="inline-block px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm mr-2 mb-2"
                   >
@@ -55,10 +55,10 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
-              
+
               <div className="flex flex-wrap gap-2">
                 {project.tech.map((tech, techIdx) => (
-                  <span 
+                  <span
                     key={techIdx}
                     className="px-3 py-1 bg-gray-700/50 text-gray-400 rounded-md text-sm"
                   >

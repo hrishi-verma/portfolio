@@ -1,0 +1,59 @@
+═══════════════════════════════════════════════════════════
+  COPY & PASTE THESE COMMANDS TO DEPLOY YOUR PORTFOLIO
+═══════════════════════════════════════════════════════════
+
+STEP 1: Create GitHub Repository
+─────────────────────────────────
+1. Open this URL in your browser:
+   https://github.com/new
+
+2. Fill in:
+   - Repository name: portfolio
+   - Description: My personal portfolio website
+   - Visibility: Public
+   - DO NOT check "Initialize with README"
+
+3. Click "Create repository"
+
+
+STEP 2: Push to GitHub
+───────────────────────
+After creating the repo, copy these commands:
+(Replace YOUR_USERNAME with your actual GitHub username)
+
+cd /Users/u1529305/Documents/portfolio/portfolio
+git remote add origin https://github.com/YOUR_USERNAME/portfolio.git
+git push -u origin main
+
+
+EXAMPLE (if your username is "hrishikeshverma"):
+───────────────────────────────────────────────
+git remote add origin https://github.com/hrishikeshverma/portfolio.git
+git push -u origin main
+
+
+STEP 3: Deploy on Vercel
+─────────────────────────
+1. Open: https://vercel.com
+2. Click "Sign Up" or "Login"
+3. Choose "Continue with GitHub"
+4. Click "Add New..." → "Project"
+5. Select your "portfolio" repository
+6. Click "Import"
+7. Click "Deploy" (no changes needed!)
+8. Wait 1-2 minutes
+9. Your site is LIVE! 🎉
+
+
+YOUR LIVE URL WILL BE:
+──────────────────────
+https://portfolio-YOUR_USERNAME.vercel.app
+
+
+THAT'S IT! 🚀
+═════════════
+
+Total time: ~5 minutes
+Your portfolio will be live and accessible worldwide!
+
+═══════════════════════════════════════════════════════════

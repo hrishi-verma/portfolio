@@ -8,7 +8,9 @@ export default function Hero() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    // Delay slightly to ensure animation triggers after initial paint
+    const timer = setTimeout(() => setMounted(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -19,11 +21,11 @@ export default function Hero() {
 
       <div className={`max-w-4xl mx-auto text-center relative z-10 transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-          Hi, I'm <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Hrishikesh Verma</span>
+          Hi, I&apos;m <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Hrishikesh Verma</span>
         </h1>
 
         <p className="text-xl md:text-2xl text-gray-300 mb-4">
-          Software Developer & Master's Student
+          Software Developer & Master&apos;s Student
         </p>
 
         <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">

@@ -1,4 +1,8 @@
+'use client';
+
 import { Award, Users, Trophy } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { fadeUpVariants, staggerContainerVariants, staggerItemVariants } from '@/hooks/useScrollAnimation';
 
 export default function Achievements() {
   const achievements = [
@@ -25,14 +29,29 @@ export default function Achievements() {
   return (
     <section id="achievements" className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-white mb-12 text-center">Achievements & Recognition</h2>
+        <motion.h2
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeUpVariants}
+          className="text-4xl font-bold text-white mb-12 text-center"
+        >
+          Achievements & Recognition
+        </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainerVariants}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
           {achievements.map((achievement, idx) => {
             const Icon = achievement.icon;
             return (
-              <div
+              <motion.div
                 key={idx}
+                variants={staggerItemVariants}
                 className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500/50 transition-all hover:transform hover:scale-105"
               >
                 <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
@@ -42,11 +61,11 @@ export default function Achievements() {
                 <h3 className="text-xl font-bold text-white mb-2">{achievement.title}</h3>
                 <p className="text-sm text-green-400 mb-3">{achievement.period}</p>
                 <p className="text-gray-300 leading-relaxed">{achievement.description}</p>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </section >
   );
 }

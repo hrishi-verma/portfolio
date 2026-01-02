@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { Github, Linkedin, Mail, Send } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { fadeUpVariants, slideLeftVariants, slideRightVariants } from '@/hooks/useScrollAnimation';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -41,11 +43,24 @@ export default function Contact() {
   return (
     <section id="contact" className="py-20 px-4">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl font-bold text-white mb-12 text-center">Get In Touch</h2>
+        <motion.h2
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeUpVariants}
+          className="text-4xl font-bold text-white mb-12 text-center"
+        >
+          Get In Touch
+        </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Contact Info */}
-          <div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={slideLeftVariants}
+          >
             <p className="text-gray-300 text-lg mb-8">
               I&apos;m always open to discussing new opportunities, collaborations, or just chatting about tech.
               Feel free to reach out!
@@ -71,7 +86,7 @@ export default function Contact() {
               </a>
 
               <a
-                href="https://github.com"
+                href="https://github.com/hrishi-verma"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-gray-300 hover:text-blue-400 transition-colors"
@@ -80,10 +95,17 @@ export default function Contact() {
                 <span>GitHub Profile</span>
               </a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Contact Form */}
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <motion.form
+            onSubmit={handleSubmit}
+            className="space-y-4"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={slideRightVariants}
+          >
             <div>
               <input
                 type="text"
@@ -127,10 +149,10 @@ export default function Contact() {
               type="submit"
               disabled={status === 'submitting' || status === 'success'}
               className={`w-full px-6 py-3 rounded-lg font-medium transition-all flex items-center justify-center gap-2 ${status === 'success'
-                  ? 'bg-green-600 text-white cursor-default'
-                  : status === 'error'
-                    ? 'bg-red-600 text-white'
-                    : 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:shadow-lg hover:shadow-purple-500/50 hover:scale-105'
+                ? 'bg-green-600 text-white cursor-default'
+                : status === 'error'
+                  ? 'bg-red-600 text-white'
+                  : 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:shadow-lg hover:shadow-purple-500/50 hover:scale-105'
                 }`}
             >
               {status === 'submitting' ? (
@@ -146,7 +168,7 @@ export default function Contact() {
                 </>
               )}
             </button>
-          </form>
+          </motion.form>
         </div>
       </div>
 

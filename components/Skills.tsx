@@ -1,3 +1,8 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { fadeUpVariants, staggerContainerVariants, staggerItemVariants } from '@/hooks/useScrollAnimation';
+
 export default function Skills() {
   const skillCategories = [
     {
@@ -29,12 +34,27 @@ export default function Skills() {
   return (
     <section id="skills" className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-white mb-12 text-center">Skills & Technologies</h2>
+        <motion.h2
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeUpVariants}
+          className="text-4xl font-bold text-white mb-12 text-center"
+        >
+          Skills & Technologies
+        </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainerVariants}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           {skillCategories.map((category, idx) => (
-            <div
+            <motion.div
               key={idx}
+              variants={staggerItemVariants}
               className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-blue-500/50 transition-all hover:transform hover:scale-105"
             >
               <h3 className="text-xl font-semibold text-blue-400 mb-4">{category.title}</h3>
@@ -48,10 +68,10 @@ export default function Skills() {
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </section >
   );
 }

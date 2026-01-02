@@ -1,3 +1,8 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { fadeUpVariants, slideLeftVariants, slideRightVariants } from '@/hooks/useScrollAnimation';
+
 export default function Experience() {
   const experiences = [
     {
@@ -49,7 +54,15 @@ export default function Experience() {
   return (
     <section id="experience" className="py-20 px-4">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-4xl font-bold text-white mb-12 text-center">Experience</h2>
+        <motion.h2
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeUpVariants}
+          className="text-4xl font-bold text-white mb-12 text-center"
+        >
+          Experience
+        </motion.h2>
 
         <div className="relative">
           {/* Timeline line */}
@@ -57,8 +70,12 @@ export default function Experience() {
 
           <div className="space-y-12">
             {experiences.map((exp, idx) => (
-              <div
+              <motion.div
                 key={idx}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={idx % 2 === 0 ? slideLeftVariants : slideRightVariants}
                 className={`relative flex flex-col md:flex-row gap-8 ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
               >
                 {/* Timeline dot */}
@@ -84,7 +101,7 @@ export default function Experience() {
 
                 {/* Spacer for alternating layout */}
                 <div className="hidden md:block flex-1" />
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

@@ -1,3 +1,8 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { fadeUpVariants, staggerContainerVariants, staggerItemVariants } from '@/hooks/useScrollAnimation';
+
 export default function Projects() {
   const projects = [
     {
@@ -29,12 +34,27 @@ export default function Projects() {
   return (
     <section id="projects" className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-white mb-12 text-center">Featured Projects</h2>
+        <motion.h2
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeUpVariants}
+          className="text-4xl font-bold text-white mb-12 text-center"
+        >
+          Featured Projects
+        </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainerVariants}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+        >
           {projects.map((project, idx) => (
-            <div
+            <motion.div
               key={idx}
+              variants={staggerItemVariants}
               className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-purple-500/50 transition-all hover:transform hover:scale-105 group"
             >
               <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
@@ -66,10 +86,10 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </section >
   );
 }

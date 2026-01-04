@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { fadeUpVariants, slideLeftVariants, slideRightVariants } from '@/hooks/useScrollAnimation';
+import TiltCard from './TiltCard';
 
 export default function Experience() {
   const experiences = [
@@ -83,20 +84,22 @@ export default function Experience() {
 
                 {/* Content */}
                 <div className={`flex-1 ml-8 md:ml-0 ${idx % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
-                  <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-blue-500/50 transition-all text-left">
-                    <h3 className="text-xl font-bold text-white mb-1">{exp.role}</h3>
-                    <p className="text-blue-400 font-medium mb-1">{exp.company}</p>
-                    <p className="text-gray-400 text-sm mb-4">{exp.period} • {exp.location}</p>
+                  <TiltCard>
+                    <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-blue-500/50 transition-colors text-left">
+                      <h3 className="text-xl font-bold text-white mb-1">{exp.role}</h3>
+                      <p className="text-blue-400 font-medium mb-1">{exp.company}</p>
+                      <p className="text-gray-400 text-sm mb-4">{exp.period} • {exp.location}</p>
 
-                    <ul className="space-y-2">
-                      {exp.achievements.map((achievement, achIdx) => (
-                        <li key={achIdx} className="text-gray-300 text-sm leading-relaxed flex items-start gap-2">
-                          <span className="text-blue-400 mt-1 shrink-0">▹</span>
-                          <span>{achievement}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                      <ul className="space-y-2">
+                        {exp.achievements.map((achievement, achIdx) => (
+                          <li key={achIdx} className="text-gray-300 text-sm leading-relaxed flex items-start gap-2">
+                            <span className="text-blue-400 mt-1 shrink-0">▹</span>
+                            <span>{achievement}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </TiltCard>
                 </div>
 
                 {/* Spacer for alternating layout */}

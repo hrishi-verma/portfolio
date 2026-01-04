@@ -3,6 +3,7 @@
 import { Award, Users, Trophy } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { fadeUpVariants, staggerContainerVariants, staggerItemVariants } from '@/hooks/useScrollAnimation';
+import TiltCard from './TiltCard';
 
 export default function Achievements() {
   const achievements = [
@@ -52,20 +53,23 @@ export default function Achievements() {
               <motion.div
                 key={idx}
                 variants={staggerItemVariants}
-                className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500/50 transition-all hover:transform hover:scale-105"
               >
-                <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
-                  <Icon className="w-6 h-6 text-green-400" />
-                </div>
+                <TiltCard className="h-full">
+                  <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500/50 transition-colors h-full">
+                    <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
+                      <Icon className="w-6 h-6 text-green-400" />
+                    </div>
 
-                <h3 className="text-xl font-bold text-white mb-2">{achievement.title}</h3>
-                <p className="text-sm text-green-400 mb-3">{achievement.period}</p>
-                <p className="text-gray-300 leading-relaxed">{achievement.description}</p>
+                    <h3 className="text-xl font-bold text-white mb-2">{achievement.title}</h3>
+                    <p className="text-sm text-green-400 mb-3">{achievement.period}</p>
+                    <p className="text-gray-300 leading-relaxed">{achievement.description}</p>
+                  </div>
+                </TiltCard>
               </motion.div>
             );
           })}
         </motion.div>
       </div>
-    </section >
+    </section>
   );
 }

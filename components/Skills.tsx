@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { fadeUpVariants, staggerContainerVariants, staggerItemVariants } from '@/hooks/useScrollAnimation';
+import TiltCard from './TiltCard';
 
 export default function Skills() {
   const skillCategories = [
@@ -55,23 +56,26 @@ export default function Skills() {
             <motion.div
               key={idx}
               variants={staggerItemVariants}
-              className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-blue-500/50 transition-all hover:transform hover:scale-105"
             >
-              <h3 className="text-xl font-semibold text-blue-400 mb-4">{category.title}</h3>
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill, skillIdx) => (
-                  <span
-                    key={skillIdx}
-                    className="px-3 py-1 bg-gray-700/50 text-gray-300 rounded-full text-sm hover:bg-gray-600/50 transition-colors"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
+              <TiltCard className="h-full">
+                <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-blue-500/50 transition-colors h-full">
+                  <h3 className="text-xl font-semibold text-blue-400 mb-4">{category.title}</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill, skillIdx) => (
+                      <span
+                        key={skillIdx}
+                        className="px-3 py-1 bg-gray-700/50 text-gray-300 rounded-full text-sm hover:bg-gray-600/50 transition-colors"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </TiltCard>
             </motion.div>
           ))}
         </motion.div>
       </div>
-    </section >
+    </section>
   );
 }

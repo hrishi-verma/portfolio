@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { fadeUpVariants, staggerContainerVariants, staggerItemVariants } from '@/hooks/useScrollAnimation';
+import TiltCard from './TiltCard';
 
 export default function Projects() {
   const projects = [
@@ -55,41 +56,44 @@ export default function Projects() {
             <motion.div
               key={idx}
               variants={staggerItemVariants}
-              className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-purple-500/50 transition-all hover:transform hover:scale-105 group"
             >
-              <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
-                {project.title}
-              </h3>
+              <TiltCard className="h-full">
+                <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-purple-500/50 transition-colors h-full">
+                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
+                    {project.title}
+                  </h3>
 
-              <p className="text-gray-300 mb-4 leading-relaxed">
-                {project.description}
-              </p>
+                  <p className="text-gray-300 mb-4 leading-relaxed">
+                    {project.description}
+                  </p>
 
-              <div className="mb-4">
-                {project.highlights.map((highlight, hIdx) => (
-                  <span
-                    key={hIdx}
-                    className="inline-block px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm mr-2 mb-2"
-                  >
-                    {highlight}
-                  </span>
-                ))}
-              </div>
+                  <div className="mb-4">
+                    {project.highlights.map((highlight, hIdx) => (
+                      <span
+                        key={hIdx}
+                        className="inline-block px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm mr-2 mb-2"
+                      >
+                        {highlight}
+                      </span>
+                    ))}
+                  </div>
 
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((tech, techIdx) => (
-                  <span
-                    key={techIdx}
-                    className="px-3 py-1 bg-gray-700/50 text-gray-400 rounded-md text-sm"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech, techIdx) => (
+                      <span
+                        key={techIdx}
+                        className="px-3 py-1 bg-gray-700/50 text-gray-400 rounded-md text-sm"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </TiltCard>
             </motion.div>
           ))}
         </motion.div>
       </div>
-    </section >
+    </section>
   );
 }

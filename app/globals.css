@@ -3,19 +3,191 @@
 @theme {
   --color-background: #0a0a0f;
   --color-foreground: #f8fafc;
-  
+
   --font-sans: ui-sans-serif, system-ui, sans-serif;
-  
+
   --animate-fade-in: fadeIn 0.6s ease-in;
   --animate-slide-up: slideUp 0.6s ease-out;
   --animate-slide-in-left: slideInLeft 0.6s ease-out;
   --animate-slide-in-right: slideInRight 0.6s ease-out;
 }
 
+/* Theme CSS Variables */
+:root {
+  --bg-primary: #030712;
+  --bg-secondary: rgba(31, 41, 55, 0.5);
+  --bg-card: rgba(31, 41, 55, 0.3);
+  --text-primary: #ffffff;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  --border-color: #374151;
+  --border-light: #4b5563;
+}
+
+/* Light Mode Variables */
+.light {
+  --bg-primary: #f8fafc;
+  --bg-secondary: rgba(255, 255, 255, 0.9);
+  --bg-card: rgba(255, 255, 255, 0.8);
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  --border-color: #e5e7eb;
+  --border-light: #d1d5db;
+}
+
+/* Base Theme Styles */
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light Mode Overrides */
+.light {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.light section {
+  color: var(--text-primary);
+}
+
+/* Card backgrounds */
+.light .bg-gray-800\/50 {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+.light .bg-gray-800\/30 {
+  background-color: var(--bg-card);
+  border-color: var(--border-color);
+}
+
+/* Text colors */
+.light .text-white {
+  color: var(--text-primary);
+}
+
+.light .text-gray-300 {
+  color: var(--text-secondary);
+}
+
+.light .text-gray-400 {
+  color: var(--text-muted);
+}
+
+/* Border colors */
+.light .border-gray-700 {
+  border-color: var(--border-color);
+}
+
+.light .border-gray-600 {
+  border-color: var(--border-light);
+}
+
+.light .border-gray-800 {
+  border-color: var(--border-color);
+}
+
+/* Background colors */
+.light .bg-gray-800 {
+  background-color: #e5e7eb;
+}
+
+.light .bg-gray-700\/50 {
+  background-color: rgba(229, 231, 235, 0.5);
+}
+
+.light .bg-gray-900\/95 {
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.light .bg-gray-950\/80 {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.light .bg-gray-950 {
+  background-color: var(--bg-primary);
+}
+
+/* Hover states */
+.light .hover\:bg-gray-700:hover {
+  background-color: #d1d5db;
+}
+
+.light .hover\:bg-gray-800\/50:hover {
+  background-color: rgba(229, 231, 235, 0.5);
+}
+
+.light .hover\:text-white:hover {
+  color: var(--text-primary);
+}
+
+/* Form inputs */
+.light input,
+.light textarea {
+  background-color: #ffffff;
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.light input::placeholder,
+.light textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.light input:focus,
+.light textarea:focus {
+  border-color: #3b82f6;
+}
+
+/* Skill/tech tags */
+.light .bg-gray-700\/50 {
+  background-color: rgba(229, 231, 235, 0.8);
+}
+
+/* Icon backgrounds */
+.light .bg-blue-500\/20 {
+  background-color: rgba(59, 130, 246, 0.15);
+}
+
+.light .bg-purple-500\/20 {
+  background-color: rgba(147, 51, 234, 0.2);
+}
+
+/* Project highlight tags - stronger purple in light mode */
+.light .text-purple-300 {
+  color: #7c3aed;
+}
+
+.light .bg-purple-500\/20.text-purple-300 {
+  background-color: rgba(124, 58, 237, 0.15);
+  color: #6d28d9;
+  font-weight: 500;
+}
+
+/* Ensure purple hover states work in light mode */
+.light .hover\:text-purple-400:hover {
+  color: #7c3aed;
+}
+
+.light .hover\:border-purple-500\/50:hover {
+  border-color: rgba(139, 92, 246, 0.5);
+}
+
+/* Green highlight tags for light mode */
+.light .text-green-400 {
+  color: #059669;
+}
+
+.light .bg-green-500\/20 {
+  background-color: rgba(16, 185, 129, 0.15);
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -26,6 +198,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -37,6 +210,7 @@
     opacity: 0;
     transform: translateX(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -48,6 +222,7 @@
     opacity: 0;
     transform: translateX(30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);

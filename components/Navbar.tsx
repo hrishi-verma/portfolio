@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, FileText } from 'lucide-react';
+import { Menu, X, FileText, Sun, Moon } from 'lucide-react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const { theme, toggleTheme } = useTheme();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -30,7 +32,9 @@ export default function Navbar() {
 
     return (
         <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-gray-950/80 backdrop-blur-md shadow-lg border-b border-gray-800' : 'bg-transparent'
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+                    ? 'bg-gray-950/80 backdrop-blur-md shadow-lg border-b border-gray-800'
+                    : 'bg-transparent'
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,7 +48,7 @@ export default function Navbar() {
 
                     {/* Desktop Menu */}
                     <div className="hidden md:block">
-                        <div className="ml-10 flex items-baseline space-x-8">
+                        <div className="ml-10 flex items-center space-x-6">
                             {navLinks.map((link) => (
                                 <a
                                     key={link.name}
@@ -55,7 +59,7 @@ export default function Navbar() {
                                 </a>
                             ))}
                             <a
-                                href="/resume.pdf" // Placeholder for resume
+                                href="/resume.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full text-sm font-medium hover:shadow-lg hover:shadow-purple-500/20 transition-all hover:scale-105"
@@ -63,11 +67,37 @@ export default function Navbar() {
                                 <FileText className="w-4 h-4" />
                                 Resume
                             </a>
+
+                            {/* Theme Toggle Button */}
+                            <button
+                                onClick={toggleTheme}
+                                className="p-2 rounded-full bg-gray-800/50 hover:bg-gray-700/50 transition-all hover:scale-110"
+                                aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+                            >
+                                {theme === 'dark' ? (
+                                    <Sun className="w-5 h-5 text-yellow-400" />
+                                ) : (
+                                    <Moon className="w-5 h-5 text-gray-700" />
+                                )}
+                            </button>
                         </div>
                     </div>
 
                     {/* Mobile menu button */}
-                    <div className="md:hidden">
+                    <div className="md:hidden flex items-center gap-2">
+                        {/* Theme Toggle (Mobile) */}
+                        <button
+                            onClick={toggleTheme}
+                            className="p-2 rounded-full bg-gray-800/50 hover:bg-gray-700/50 transition-all"
+                            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+                        >
+                            {theme === 'dark' ? (
+                                <Sun className="w-5 h-5 text-yellow-400" />
+                            ) : (
+                                <Moon className="w-5 h-5 text-gray-700" />
+                            )}
+                        </button>
+
                         <button
                             onClick={() => setIsOpen(!isOpen)}
                             className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700/50 focus:outline-none"

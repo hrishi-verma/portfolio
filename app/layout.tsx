@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import HeroArt from '@/components/HeroArt';
 import Navbar from '@/components/Navbar';
+import { ThemeProvider } from '@/contexts/ThemeContext';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -24,11 +25,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} antialiased bg-gray-950 text-white`}>
-        <HeroArt />
-        <Navbar />
-        {children}
+    <html lang="en" className="scroll-smooth dark">
+      <body className={`${inter.className} antialiased bg-gray-950 text-white transition-colors duration-300`}>
+        <ThemeProvider>
+          <HeroArt />
+          <Navbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

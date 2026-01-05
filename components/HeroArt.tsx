@@ -56,38 +56,31 @@ export default function HeroArt() {
       });
     }
 
-    // 2. Clouds (Light Mode Only - Canvas Drawn)
+    // 2. Clouds (Light Mode Only - Image Based)
     interface Cloud {
       x: number;
       y: number;
       speed: number;
       scale: number;
-      puffs: { xOff: number; yOff: number; rx: number; ry: number }[];
+      opacity: number;
     }
     const clouds: Cloud[] = [];
-    const CLOUD_COUNT = 5;
-    const createCloud = (): Cloud => {
-      const puffs: { xOff: number; yOff: number; rx: number; ry: number }[] = [];
-      const puffCount = 5 + Math.floor(Math.random() * 4);
-      for (let p = 0; p < puffCount; p++) {
-        puffs.push({
-          xOff: (Math.random() - 0.5) * 120,
-          yOff: (Math.random() - 0.5) * 40,
-          rx: 40 + Math.random() * 50, // Wider ellipse
-          ry: 20 + Math.random() * 25   // Shorter ellipse
-        });
-      }
-      return {
-        x: Math.random() * canvas.width,
-        y: Math.random() * (canvas.height * 0.35) + 40, // Upper area
-        speed: 0.08 + Math.random() * 0.1,
-        scale: 0.7 + Math.random() * 0.5,
-        puffs
-      };
-    };
+    const CLOUD_COUNT = 4;
+
+    // Create cloud objects
     for (let i = 0; i < CLOUD_COUNT; i++) {
-      clouds.push(createCloud());
+      clouds.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * (canvas.height * 0.4),
+        speed: 0.05 + Math.random() * 0.05,
+        scale: 0.5 + Math.random() * 0.8, // Adjust scale for image
+        opacity: 0.6 + Math.random() * 0.4
+      });
     }
+
+    // Load Cloud Image
+    const cloudImage = new Image();
+    cloudImage.src = '/images/cloud.png';
 
     // 3. Shooting Stars
     interface ShootingStar {
@@ -269,12 +262,17 @@ export default function HeroArt() {
       }
 
       // 5. Draw Clouds (Light Mode Only)
-      if (theme === 'light') {
+      if (theme === 'light' && cloudImage.complete) {
         clouds.forEach(cloud => {
           // Move cloud slowly to the right
           cloud.x += cloud.speed;
-          if (cloud.x > canvas.width + 200) {
-            cloud.x = -200;
+
+          // Image dimensions
+          const imgW = cloudImage.width * cloud.scale;
+          const imgH = cloudImage.height * cloud.scale;
+
+          if (cloud.x > canvas.width + imgW) {
+            cloud.x = -imgW;
           }
 
           // Parallax
@@ -283,23 +281,9 @@ export default function HeroArt() {
 
           ctx.save();
           ctx.translate(cloud.x + parallaxX, cloud.y + parallaxY);
-          ctx.scale(cloud.scale, cloud.scale);
+          ctx.globalAlpha = cloud.opacity;
 
-          // Draw each puff as a blurred ellipse using radial gradient
-          cloud.puffs.forEach(puff => {
-            const gradient = ctx.createRadialGradient(
-              puff.xOff, puff.yOff, 0,
-              puff.xOff, puff.yOff, puff.rx
-            );
-            gradient.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
-            gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.6)');
-            gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-
-            ctx.fillStyle = gradient;
-            ctx.beginPath();
-            ctx.ellipse(puff.xOff, puff.yOff, puff.rx, puff.ry, 0, 0, Math.PI * 2);
-            ctx.fill();
-          });
+          ctx.drawImage(cloudImage, 0, 0, imgW, imgH);
 
           ctx.restore();
         });
@@ -334,13 +318,13 @@ export default function HeroArt() {
         {/* Layer 1: Large soft drift */}
         <div
           className={`absolute top-[-20%] left-[-10%] w-[120%] h-[60%] blur-[60px] animate-drift-slow transition-colors duration-1000
-                ${theme === 'dark' ? 'opacity-40 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/10 via-slate-900/5 to-transparent' : 'opacity-90 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-white/60 to-transparent'}`}
+                ${theme === 'dark' ? 'opacity-40 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/10 via-slate-900/5 to-transparent' : 'opacity-40 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-white/40 to-transparent'}`}
         />
 
         {/* Layer 2: Lower mist */}
         <div
           className={`absolute bottom-[-10%] right-[-20%] w-[100%] h-[50%] blur-[50px] animate-drift-slow transition-colors duration-1000 delay-1000
-                ${theme === 'dark' ? 'opacity-30 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-900/10 via-transparent to-transparent' : 'opacity-80 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-white/50 to-transparent'}`}
+                ${theme === 'dark' ? 'opacity-30 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-900/10 via-transparent to-transparent' : 'opacity-30 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-white/30 to-transparent'}`}
           style={{ animationDuration: '30s', animationDirection: 'reverse' }}
         />
       </div>

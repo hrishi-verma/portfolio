@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, X, FileText, Sun, Moon } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
+import MusicPlayer from './MusicPlayer';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -33,8 +34,8 @@ export default function Navbar() {
     return (
         <nav
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-                    ? 'bg-gray-950/80 backdrop-blur-md shadow-lg border-b border-gray-800'
-                    : 'bg-transparent'
+                ? 'bg-gray-950/80 backdrop-blur-md shadow-lg border-b border-gray-800'
+                : 'bg-transparent'
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -80,6 +81,9 @@ export default function Navbar() {
                                     <Moon className="w-5 h-5 text-gray-700" />
                                 )}
                             </button>
+
+                            {/* Music Toggle Button */}
+                            <MusicPlayer />
                         </div>
                     </div>
 
@@ -97,6 +101,9 @@ export default function Navbar() {
                                 <Moon className="w-5 h-5 text-gray-700" />
                             )}
                         </button>
+
+                        {/* Music Toggle (Mobile) */}
+                        <MusicPlayer />
 
                         <button
                             onClick={() => setIsOpen(!isOpen)}

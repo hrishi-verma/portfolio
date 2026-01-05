@@ -18,7 +18,15 @@ export default function Hero() {
     <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
       <div className={`max-w-4xl mx-auto text-center relative z-10 transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-          Hi, I&apos;m <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Hrishikesh Verma</span>
+          Hi, I&apos;m{' '}
+          <a
+            href="https://linkedin.com/in/hrishikesh-verma"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent hover:from-blue-300 hover:to-purple-400 transition-all cursor-pointer"
+          >
+            Hrishikesh Verma
+          </a>
         </h1>
 
         <p className="text-xl md:text-2xl text-gray-300 mb-4">

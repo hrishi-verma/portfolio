@@ -4,6 +4,7 @@ import './globals.css';
 import HeroArt from '@/components/HeroArt';
 import Navbar from '@/components/Navbar';
 import { ThemeProvider } from '@/contexts/ThemeContext';
+import CustomCursor from '@/components/CustomCursor';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth dark">
       <body className={`${inter.className} antialiased bg-gray-950 text-white transition-colors duration-300`}>
         <ThemeProvider>
+          <CustomCursor />
           <HeroArt />
           <Navbar />
           {children}

@@ -27,7 +27,7 @@ export default function About() {
           <TiltCard tiltAmount={5}>
             <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700">
               <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                I am a <span className="font-bold text-white">Full Stack Developer</span> with <span className="font-bold text-white">3.5 years of industry experience</span>, currently distinguishing myself at the <span className="font-bold text-white">University of Utah</span> with a <span className="font-bold text-white">3.94 GPA</span> in my Master&apos;s program.
+                I am a <span className="font-bold text-white">Full Stack Developer</span> with <span className="font-bold text-white">3.5 years of industry experience</span>, currently distinguishing myself at the <span className="font-bold text-white">University of Utah</span> with a <span className="font-bold text-white">3.9 GPA</span> in my Master&apos;s program.
               </p>
 
               <p className="text-gray-300 text-lg leading-relaxed mb-6">

@@ -8,11 +8,11 @@ export default function Skills() {
   const skillCategories = [
     {
       title: "Languages",
-      skills: ["JavaScript", "TypeScript", "Python", "Java", "C++", "C", "Rust", "Go", "SQL", "HTML/CSS"]
+      skills: ["JavaScript", "TypeScript", "Python", "Java", "C", "C++", "Rust", "Assembly", "Shell Scripting", "Bash Scripting", "CSS", "SCSS", "HTML"]
     },
     {
       title: "Frontend",
-      skills: ["React", "Next.js", "Redux", "Angular", "Vue.js", "Material-UI", "Tailwind CSS", "Framer Motion"]
+      skills: ["JavaScript", "Next.js", "TypeScript", "Vue.js", "ReactJS", "Angular", "Redux", "Tailwind CSS", "Material UI", "D3.js", "Webpack", "Jest", "Responsive Design", "Framer Motion", "API Integration"]
     },
     {
       title: "Backend",

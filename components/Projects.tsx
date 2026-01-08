@@ -45,7 +45,7 @@ export default function Projects() {
       tech: ["React.js", "D3.js", "Chart.js", "Node.js"],
       highlights: ["Interactive Data Viz", "Conservation Tech"],
       githubUrl: "https://github.com/hrishi-verma/EchoesOfNature",
-      liveUrl: "#"
+      liveUrl: "https://hrishi-verma.github.io/EchoesOfNature/"
     },
     {
       title: "Personal Portfolio",

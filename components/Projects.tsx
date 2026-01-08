@@ -13,7 +13,7 @@ export default function Projects() {
       tech: ["Python", "NetworkX", "Graph Algorithms", "Data Science"],
       highlights: ["26% size reduction", "486 recurring patterns identified"],
       githubUrl: "https://github.com/hrishi-verma/motif-based-graph-compression",
-      liveUrl: "#"
+      liveUrl: "https://hrishi-verma.github.io/motif-based-graph-compression/"
     },
     {
       title: "InsightHub",

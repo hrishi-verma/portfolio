@@ -53,7 +53,7 @@ export default function Projects() {
       tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion"],
       highlights: ["99/100 Performance", "Theme System"],
       githubUrl: "https://github.com/hrishi-verma/portfolio",
-      liveUrl: "https://portfolio-xi-tawny-61.vercel.app/"
+      liveUrl: "https://hrishikeshverma.com/"
     }
   ];
 

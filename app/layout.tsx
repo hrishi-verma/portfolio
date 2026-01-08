@@ -9,6 +9,7 @@ import CustomCursor from '@/components/CustomCursor';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://hrishikeshverma.com'),
   title: 'Hrishikesh Verma | Software Developer',
   description: "Full-stack developer and master's student specializing in algorithms, machine learning, and scalable systems. Currently at University of Utah.",
   keywords: ['software developer', 'full-stack developer', 'machine learning', 'algorithms', 'Next.js', 'React', 'Spring Boot'],

@@ -16,22 +16,6 @@ export default function Projects() {
       liveUrl: "https://hrishi-verma.github.io/motif-based-graph-compression/"
     },
     {
-      title: "Insight Hub",
-      description: "Architected a real-time log monitoring system using Kafka, Node.js, and Python. Integrated an ML engine with Isolation Forest models to detect anomalies and latency spikes in real-time, visualizing data on a Next.js dashboard.",
-      tech: ["Kafka", "Node.js", "Python", "Next.js", "PostgreSQL", "Docker", "scikit-learn"],
-      highlights: ["Real-time Anomaly Detection", "Scalable Architecture"],
-      githubUrl: "https://github.com/hrishi-verma/InsightHub",
-      liveUrl: "#"
-    },
-    {
-      title: "Virtual Self-Driving Car",
-      description: "Architected AI system using Convolutional Neural Networks and OpenCV, achieving 90% accuracy for obstacle detection. Optimized CNN architecture for 15% improvement in prediction accuracy.",
-      tech: ["Python", "CNN", "OpenCV", "Machine Learning"],
-      highlights: ["90% accuracy", "15% performance boost"],
-      githubUrl: "https://github.com/hrishi-verma/Virtual-Self-Driving-Car",
-      liveUrl: "#"
-    },
-    {
       title: "Sneaker Marketplace",
       description: "Built full-stack marketplace with React, Express, and PostgreSQL featuring real-time inventory updates. Achieved sub-200ms API response times under 5,000 requests/second with 98% payment success rate.",
       tech: ["React", "Express.js", "PostgreSQL", "Stripe API"],
@@ -40,12 +24,28 @@ export default function Projects() {
       liveUrl: "https://hrishi-verma.github.io/Sneaker-Marketplace/"
     },
     {
-      title: "Echoes Of Nature",
+      title: "Virtual Self-Driving Car",
+      description: "Architected AI system using Convolutional Neural Networks and OpenCV, achieving 90% accuracy for obstacle detection. Optimized CNN architecture for 15% improvement in prediction accuracy.",
+      tech: ["Python", "CNN", "OpenCV", "Machine Learning"],
+      highlights: ["90% accuracy", "15% performance boost"],
+      githubUrl: "https://github.com/hrishi-verma/Virtual-Self-Driving-Car",
+      liveUrl: "https://www.youtube.com/watch?v=A0wGBdx95Ls"
+    },
+    {
+      title: "EchoesOfNature",
       description: "A digital archive preserving the lost voices of wildlife. Features interactive maps and charts to track extinct species, visualizing their history, and raising awareness for conservation.",
       tech: ["React.js", "D3.js", "Chart.js", "Node.js"],
       highlights: ["Interactive Data Viz", "Conservation Tech"],
       githubUrl: "https://github.com/hrishi-verma/EchoesOfNature",
       liveUrl: "https://hrishi-verma.github.io/EchoesOfNature/"
+    },
+    {
+      title: "InsightHub",
+      description: "Architected a real-time log monitoring system using Kafka, Node.js, and Python. Integrated an ML engine with Isolation Forest models to detect anomalies and latency spikes in real-time, visualizing data on a Next.js dashboard.",
+      tech: ["Kafka", "Node.js", "Python", "Next.js", "PostgreSQL", "Docker", "scikit-learn"],
+      highlights: ["Real-time Anomaly Detection", "Scalable Architecture"],
+      githubUrl: "https://github.com/hrishi-verma/InsightHub",
+      liveUrl: "COMING_SOON"
     },
     {
       title: "Personal Portfolio",
@@ -128,7 +128,7 @@ export default function Projects() {
                       </a>
                     )}
 
-                    {project.liveUrl && (
+                    {project.liveUrl && project.liveUrl !== "COMING_SOON" && (
                       <a
                         href={project.liveUrl}
                         target="_blank"
@@ -138,6 +138,13 @@ export default function Projects() {
                         <ExternalLink className="w-5 h-5" />
                         Live Demo
                       </a>
+                    )}
+
+                    {project.liveUrl === "COMING_SOON" && (
+                      <span className="flex items-center gap-2 text-gray-500 cursor-not-allowed text-sm font-medium z-10">
+                        <ExternalLink className="w-5 h-5" />
+                        Coming Soon
+                      </span>
                     )}
                   </div>
                 </div>

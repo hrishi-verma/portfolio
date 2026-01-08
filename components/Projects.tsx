@@ -13,7 +13,7 @@ export default function Projects() {
       tech: ["Python", "NetworkX", "Graph Algorithms", "Data Science"],
       highlights: ["26% size reduction", "486 recurring patterns identified"],
       githubUrl: "https://github.com/hrishi-verma/motif-based-graph-compression",
-      liveUrl: ""
+      liveUrl: "#"
     },
     {
       title: "InsightHub",
@@ -21,7 +21,7 @@ export default function Projects() {
       tech: ["Kafka", "Node.js", "Python", "Next.js", "PostgreSQL", "Docker", "scikit-learn"],
       highlights: ["Real-time Anomaly Detection", "Scalable Architecture"],
       githubUrl: "https://github.com/hrishi-verma/InsightHub",
-      liveUrl: ""
+      liveUrl: "#"
     },
     {
       title: "Virtual Self-Driving Car",
@@ -29,15 +29,31 @@ export default function Projects() {
       tech: ["Python", "CNN", "OpenCV", "Machine Learning"],
       highlights: ["90% accuracy", "15% performance boost"],
       githubUrl: "https://github.com/hrishi-verma/Virtual-Self-Driving-Car",
-      liveUrl: ""
+      liveUrl: "#"
     },
     {
       title: "Sneaker Marketplace",
       description: "Built full-stack marketplace with React, Express, and PostgreSQL featuring real-time inventory updates. Achieved sub-200ms API response times under 5,000 requests/second with 98% payment success rate.",
       tech: ["React", "Express.js", "PostgreSQL", "Stripe API"],
       highlights: ["Sub-200ms response", "98% payment success"],
-      githubUrl: "https://github.com/hrishi-verma",
-      liveUrl: ""
+      githubUrl: "https://github.com/hrishi-verma/Sneaker-Marketplace",
+      liveUrl: "https://hrishi-verma.github.io/Sneaker-Marketplace/"
+    },
+    {
+      title: "EchoesOfNature",
+      description: "A digital archive preserving the lost voices of wildlife. Features interactive maps and charts to track extinct species, visualizing their history, and raising awareness for conservation.",
+      tech: ["React.js", "D3.js", "Chart.js", "Node.js"],
+      highlights: ["Interactive Data Viz", "Conservation Tech"],
+      githubUrl: "https://github.com/hrishi-verma/EchoesOfNature",
+      liveUrl: "#"
+    },
+    {
+      title: "Personal Portfolio",
+      description: "Modern, high-performance portfolio website with theme-aware particle animations, background music, and 100% SEO score. Built with Next.js 15 app router and TypeScript.",
+      tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      highlights: ["99/100 Performance", "Theme System"],
+      githubUrl: "https://github.com/hrishi-verma/portfolio",
+      liveUrl: "https://portfolio-xi-tawny-61.vercel.app/"
     }
   ];
 
@@ -109,6 +125,18 @@ export default function Projects() {
                       >
                         <Github className="w-5 h-5" />
                         View Code
+                      </a>
+                    )}
+
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-white hover:text-blue-400 transition-colors text-sm font-medium z-10"
+                      >
+                        <ExternalLink className="w-5 h-5" />
+                        Live Demo
                       </a>
                     )}
                   </div>

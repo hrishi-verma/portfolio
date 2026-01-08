@@ -16,7 +16,7 @@ export default function Projects() {
       liveUrl: "https://hrishi-verma.github.io/motif-based-graph-compression/"
     },
     {
-      title: "InsightHub",
+      title: "Insight Hub",
       description: "Architected a real-time log monitoring system using Kafka, Node.js, and Python. Integrated an ML engine with Isolation Forest models to detect anomalies and latency spikes in real-time, visualizing data on a Next.js dashboard.",
       tech: ["Kafka", "Node.js", "Python", "Next.js", "PostgreSQL", "Docker", "scikit-learn"],
       highlights: ["Real-time Anomaly Detection", "Scalable Architecture"],
@@ -40,7 +40,7 @@ export default function Projects() {
       liveUrl: "https://hrishi-verma.github.io/Sneaker-Marketplace/"
     },
     {
-      title: "EchoesOfNature",
+      title: "Echoes Of Nature",
       description: "A digital archive preserving the lost voices of wildlife. Features interactive maps and charts to track extinct species, visualizing their history, and raising awareness for conservation.",
       tech: ["React.js", "D3.js", "Chart.js", "Node.js"],
       highlights: ["Interactive Data Viz", "Conservation Tech"],

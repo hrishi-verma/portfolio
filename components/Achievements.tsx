@@ -1,6 +1,6 @@
 'use client';
 
-import { Award, Users, Trophy } from 'lucide-react';
+import { Award, Users, Trophy, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { fadeUpVariants, staggerContainerVariants, staggerItemVariants } from '@/hooks/useScrollAnimation';
 import TiltCard from './TiltCard';
@@ -8,10 +8,10 @@ import TiltCard from './TiltCard';
 export default function Achievements() {
   const achievements = [
     {
-      icon: Users,
-      title: "Teaching Assistant at VTU",
-      description: "Resolved 700+ Advanced Data Structures and Algorithms queries, providing tailored mentorship to enhance students' conceptual clarity and problem-solving skills",
-      period: "7 months"
+      icon: TrendingUp,
+      title: "Fast-Track Promotion at Accenture",
+      description: "Received 2 promotions within first 2 years of work, rapidly rising from a Junior Developer to a Senior Software Engineer due to consistent high-impact delivery and technical leadership",
+      period: "2021 - 2024"
     },
     {
       icon: Award,

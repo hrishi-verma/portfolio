@@ -51,7 +51,7 @@ export default function About() {
           <motion.div variants={staggerItemVariants}>
             <TiltCard className="h-full">
               <div className="bg-gray-800/30 backdrop-blur-sm rounded-xl p-6 border border-gray-700 text-center h-full">
-                <div className="text-3xl font-bold text-blue-400 mb-2">3.94</div>
+                <div className="text-3xl font-bold text-blue-400 mb-2">3.9</div>
                 <div className="text-gray-400">GPA at UofU</div>
               </div>
             </TiltCard>
@@ -68,7 +68,7 @@ export default function About() {
             <TiltCard className="h-full">
               <div className="bg-gray-800/30 backdrop-blur-sm rounded-xl p-6 border border-gray-700 text-center h-full">
                 <div className="text-3xl font-bold text-green-400 mb-2">100+</div>
-                <div className="text-gray-400">Students Mentored</div>
+                <div className="text-gray-400">Developers Mentored</div>
               </div>
             </TiltCard>
           </motion.div>

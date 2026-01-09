@@ -24,11 +24,12 @@ export default function Navbar() {
     }, []);
 
     const navLinks = [
-        { name: 'About', href: '#about' },
-        { name: 'Skills', href: '#skills' },
-        { name: 'Experience', href: '#experience' },
-        { name: 'Projects', href: '#projects' },
-        { name: 'Contact', href: '#contact' },
+        { name: 'About', href: '/#about' },
+        { name: 'Skills', href: '/#skills' },
+        { name: 'Experience', href: '/#experience' },
+        { name: 'Projects', href: '/#projects' },
+        { name: 'Research', href: '/#research' },
+        { name: 'Contact', href: '/#contact' },
     ];
 
     return (

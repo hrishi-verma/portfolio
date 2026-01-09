@@ -84,7 +84,7 @@ export default function Research() {
                                                 {paper.tags.map((tag, tagIdx) => (
                                                     <span
                                                         key={tagIdx}
-                                                        className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-xs"
+                                                        className="px-3 py-1 bg-gray-200 dark:bg-green-500/20 text-gray-800 dark:text-green-300 rounded-full text-xs font-semibold"
                                                     >
                                                         {tag}
                                                     </span>
@@ -102,7 +102,7 @@ export default function Research() {
                                                 <a
                                                     href={paper.pdfUrl}
                                                     download
-                                                    className="flex items-center gap-2 bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors pointer-events-auto"
+                                                    className="flex items-center gap-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors pointer-events-auto border border-gray-200 dark:border-transparent"
                                                 >
                                                     <Download className="w-4 h-4" />
                                                     Download PDF

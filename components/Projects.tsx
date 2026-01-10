@@ -7,6 +7,7 @@ import { Github, ExternalLink } from 'lucide-react';
 
 export default function Projects() {
   const projects = [
+
     {
       title: "Motif-Based Graph Compression",
       description: "Developed a motif-based graph compression algorithm achieving 26% reduction in graph size while preserving accuracy. Built automated pipeline processing 486 groups with reproducible analysis.",
@@ -22,6 +23,14 @@ export default function Projects() {
       highlights: ["Sub-200ms response", "98% payment success"],
       githubUrl: "https://github.com/hrishi-verma/Sneaker-Marketplace",
       liveUrl: "https://hrishi-verma.github.io/Sneaker-Marketplace/"
+    },
+    {
+      title: "RaptorProject",
+      description: "Distributed data processing system built with Apache Spark and Scala. Features Docker containerization for reproducible deployments and high-performance cluster computing workflows.",
+      tech: ["Scala", "Apache Spark", "Docker", "Shell"],
+      highlights: ["Distributed Computing", "Big Data Processing"],
+      githubUrl: "https://github.com/LiamDHealey/RaptorProject",
+      liveUrl: "https://youtu.be/kJySlm_-Ifg"
     },
     {
       title: "Virtual Self-Driving Car",

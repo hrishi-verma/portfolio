@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth dark">
-      <body className={`${inter.className} antialiased bg-gray-950 text-white transition-colors duration-300`}>
+      <body className={`${inter.className} antialiased bg-gray-950 text-white transition-colors duration-300`} suppressHydrationWarning>
         <ThemeProvider>
           <CustomCursor />
           <HeroArt />

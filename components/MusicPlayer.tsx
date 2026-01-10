@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { Volume2, VolumeX } from 'lucide-react';
+import { Music } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 
 export default function MusicPlayer() {
@@ -106,11 +106,7 @@ export default function MusicPlayer() {
             aria-label={isPlaying ? 'Mute music' : 'Play music'}
             title={isPlaying ? 'Click to mute' : 'Click to play music'}
         >
-            {isPlaying ? (
-                <Volume2 className="w-5 h-5 text-blue-400" />
-            ) : (
-                <VolumeX className="w-5 h-5 text-gray-400" />
-            )}
+            <Music className={`w-5 h-5 ${isPlaying ? 'text-blue-400' : 'text-gray-400'}`} />
         </button>
     );
 }

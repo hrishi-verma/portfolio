@@ -14,7 +14,9 @@ export const metadata: Metadata = {
     other: {
         'citation_title': 'Autonomous Driving Simulation Using Computer Vision',
         'citation_author': 'Verma, Hrishikesh',
-        'citation_publication_date': '2024/05/15',
+        'citation_publication_date': '2020/05/01',
+        'citation_volume': '02',
+        'citation_issue': '05',
         'citation_pdf_url': 'https://hrishikeshverma.com/papers/autonomous-driving-simulation.pdf',
         'citation_abstract_html_url': 'https://hrishikeshverma.com/research/autonomous-driving',
         'citation_language': 'en',
@@ -34,7 +36,9 @@ export default function ResearchPaper() {
                     <div className="flex gap-4 text-gray-600 dark:text-gray-400 mb-8">
                         <span>Hrishikesh Verma</span>
                         <span>•</span>
-                        <span>Computer Vision, CNN, OpenCV</span>
+                        <span>May 2020</span>
+                        <span>•</span>
+                        <span>Vol. 2, Issue 5</span>
                     </div>
 
                     <div className="bg-white/50 dark:bg-gray-900/50 p-6 rounded-xl border border-gray-200 dark:border-gray-800 mb-8 shadow-sm">
@@ -67,7 +71,7 @@ export default function ResearchPaper() {
                     <div className="mt-12 border-t border-gray-200 dark:border-gray-800 pt-8">
                         <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Citation</h3>
                         <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg font-mono text-sm text-gray-600 dark:text-gray-400 overflow-x-auto border border-gray-200 dark:border-gray-800">
-                            Verma, H. "Autonomous Driving Simulation Using Computer Vision." (2024). Recommended for Google Scholar indexing.
+                            Verma, H. "Autonomous Driving Simulation Using Computer Vision." Vol. 02, Issue 05 (May 2020).
                         </div>
                     </div>
                 </article>

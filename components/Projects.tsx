@@ -63,6 +63,14 @@ export default function Projects() {
       highlights: ["99/100 Performance", "Theme System"],
       githubUrl: "https://github.com/hrishi-verma/portfolio",
       liveUrl: "https://hrishikeshverma.com/"
+    },
+    {
+      title: "Auto Web Vulnerability Detection",
+      description: "Automated security scanner for web applications. Features crawling, authentication handling, and advanced fuzzing to detect XSS vulnerabilities in forms, headers, cookies, and query parameters.",
+      tech: ["Python", "Security", "Web Crawling", "Fuzzing"],
+      highlights: ["XSS Detection", "CVE Integration", "Form Fuzzing", "Cookie Fuzzing"],
+      githubUrl: "https://github.com/hrishi-verma/Auto-Web-vulnerability-detection",
+      liveUrl: "https://hrishi-verma.github.io/Auto-Web-vulnerability-detection/"
     }
   ];
 

@@ -5,6 +5,7 @@ import HeroArt from '@/components/HeroArt';
 import Navbar from '@/components/Navbar';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import CustomCursor from '@/components/CustomCursor';
+import SystemStatus from '@/components/SystemStatus';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -40,6 +41,7 @@ export default function RootLayout({
           <CustomCursor />
           <HeroArt />
           <Navbar />
+          <SystemStatus />
           {children}
         </ThemeProvider>
       </body>

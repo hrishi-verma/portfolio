@@ -73,40 +73,68 @@ export default function CustomCursor() {
         return null;
     }
 
+    // Force hide cursor via JS loop to ensure it stays hidden
+    useEffect(() => {
+        // Immediate override
+        document.documentElement.style.cursor = 'none';
+        document.body.style.cursor = 'none';
+
+        // Add a style tag to force it
+        const style = document.createElement('style');
+        style.innerHTML = `
+            * { cursor: none !important; }
+            html, body { cursor: none !important; }
+        `;
+        document.head.appendChild(style);
+
+        return () => {
+            document.head.removeChild(style);
+            document.documentElement.style.cursor = '';
+            document.body.style.cursor = '';
+        };
+    }, []);
+
     const cursorColor = theme === 'dark' ? '#FCD34D' : '#B45309'; // Amber-300 (Dark) / Amber-700 (Light)
 
     return (
-        <div className="custom-cursor-layer fixed inset-0 pointer-events-none z-[9999] overflow-hidden">
-            <div
-                ref={starRef}
-                style={{
-                    position: 'absolute',
-                    left: -100,
-                    top: -100,
-                    transform: 'translate(-50%, -50%)',
-                    width: '32px',
-                    height: '32px',
-                    opacity: cursorVisible ? 1 : 0,
-                    transition: 'opacity 0.2s ease-out', // Simplified transition
-                    willChange: 'transform, left, top',
-                    pointerEvents: 'none'
-                }}
-                className={isHovering ? 'scale-110' : 'scale-100 transition-transform duration-200'}
-            >
-                <div style={{
-                    position: 'relative',
-                    width: '100%',
-                    height: '100%',
-                    filter: isHovering ? `drop-shadow(0 0 4px ${theme === 'dark' ? 'rgba(167, 139, 250, 0.6)' : 'rgba(124, 58, 237, 0.5)'})` : 'none'
-                }}>
-                    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none">
-                        <path
-                            d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"
-                            fill={cursorColor}
-                        />
-                    </svg>
+        <>
+            <style jsx global>{`
+                * {
+                    cursor: none !important;
+                }
+            `}</style>
+            <div className="custom-cursor-layer fixed inset-0 pointer-events-none z-[9999] overflow-hidden">
+                <div
+                    ref={starRef}
+                    style={{
+                        position: 'absolute',
+                        left: -100,
+                        top: -100,
+                        transform: 'translate(-50%, -50%)',
+                        width: '32px',
+                        height: '32px',
+                        opacity: cursorVisible ? 1 : 0,
+                        transition: 'opacity 0.2s ease-out', // Simplified transition
+                        willChange: 'transform, left, top',
+                        pointerEvents: 'none'
+                    }}
+                    className={isHovering ? 'scale-110' : 'scale-100 transition-transform duration-200'}
+                >
+                    <div style={{
+                        position: 'relative',
+                        width: '100%',
+                        height: '100%',
+                        filter: isHovering ? `drop-shadow(0 0 4px ${theme === 'dark' ? 'rgba(167, 139, 250, 0.6)' : 'rgba(124, 58, 237, 0.5)'})` : 'none'
+                    }}>
+                        <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"
+                                fill={cursorColor}
+                            />
+                        </svg>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }

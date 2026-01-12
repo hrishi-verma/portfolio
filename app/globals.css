@@ -44,41 +44,40 @@ html {
 }
 
 /* Custom Cursor Styles */
-@media (pointer: fine) {
-
-  /* Set base cursor to none */
-  html,
-  body {
-    cursor: none;
-  }
-
-  /* Force hidden cursor everywhere */
-  a,
-  button,
-  [role="button"],
-  input,
-  textarea,
-  select,
-  .cursor-pointer {
-    cursor: none !important;
-  }
-
-  /* Restore text cursor ONLY for contenteditable or inputs */
-  [contenteditable="true"] {
-    cursor: text;
-  }
-
-  /* Specific override for inputs */
-  input,
-  textarea {
-    cursor: text !important;
-  }
-
-  /* Ensure custom cursor component doesn't block events */
-  .custom-cursor-layer {
-    pointer-events: none;
-  }
+/* Force hidden cursor on ALL elements globally */
+* {
+  cursor: none !important;
 }
+
+html,
+body,
+a,
+button,
+[role="button"],
+input,
+textarea,
+select,
+.cursor-pointer {
+  cursor: none !important;
+}
+
+
+/* Restore text cursor ONLY for contenteditable or inputs */
+[contenteditable="true"] {
+  cursor: text;
+}
+
+/* Specific override for inputs */
+input,
+textarea {
+  cursor: text !important;
+}
+
+/* Ensure custom cursor component doesn't block events */
+.custom-cursor-layer {
+  pointer-events: none;
+}
+
 
 /* For touch devices, keep default cursor behavior */
 @media (pointer: coarse) {

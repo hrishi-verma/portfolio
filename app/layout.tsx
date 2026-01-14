@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import HeroArt from '@/components/HeroArt';
 import Navbar from '@/components/Navbar';
@@ -7,7 +7,10 @@ import { ThemeProvider } from '@/contexts/ThemeContext';
 import CustomCursor from '@/components/CustomCursor';
 import SystemStatus from '@/components/SystemStatus';
 
-const inter = Inter({ subsets: ['latin'] });
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-jakarta',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://hrishikeshverma.com'),
@@ -21,6 +24,7 @@ export const metadata: Metadata = {
       { url: '/favicon.png', sizes: '16x16', type: 'image/png' },
     ],
     apple: '/favicon.png',
+    api: '/favicon.png',
   },
   openGraph: {
     title: 'Hrishikesh Verma | Software Developer',
@@ -36,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth dark">
-      <body className={`${inter.className} antialiased bg-gray-950 text-white transition-colors duration-300`} suppressHydrationWarning>
+      <body className={`${jakarta.className} antialiased bg-gray-950 text-white transition-colors duration-300`} suppressHydrationWarning>
         <ThemeProvider>
           <CustomCursor />
           <HeroArt />

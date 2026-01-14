@@ -18,7 +18,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="min-h-screen flex flex-col justify-center pt-32 md:pt-40 px-4 relative overflow-hidden">
+    <section className="min-h-screen flex flex-col justify-center pt-32 md:pt-40 pb-20 px-4 relative overflow-hidden">
       <div className={`max-w-4xl mx-auto text-center relative z-10 transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-[var(--text-primary)] mb-6 tracking-tight">
           Hi, I&apos;m{' '}
@@ -86,7 +86,7 @@ export default function Hero() {
           </a>
         </div>
 
-        <div className="mt-12 pt-10 border-t border-gray-800/50 w-full max-w-2xl mx-auto">
+        <div className="mt-8 pt-6 border-t border-gray-800/50 w-full max-w-2xl mx-auto">
           <p className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-6">Technologies</p>
           <div className="flex gap-8 items-center justify-center flex-wrap">
             <Tooltip content="Next.js">

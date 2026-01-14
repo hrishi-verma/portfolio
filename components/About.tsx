@@ -13,7 +13,7 @@ export default function About() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeUpVariants}
-          className="text-4xl font-bold text-white mb-8 text-center"
+          className="text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center"
         >
           About Me
         </motion.h2>
@@ -24,18 +24,18 @@ export default function About() {
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeUpVariants}
         >
-          <TiltCard tiltAmount={5}>
-            <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700">
-              <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                I am a <span className="font-bold text-white">Full Stack Developer</span> with <span className="font-bold text-white">3.5 years of industry experience</span>, currently distinguishing myself at the <span className="font-bold text-white">University of Utah</span> with a <span className="font-bold text-white">3.9 GPA</span> in my Master&apos;s program.
+          <TiltCard tiltAmount={2}>
+            <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-10 border border-gray-700 text-center">
+              <p className="text-gray-700 dark:text-gray-200 text-xl md:text-2xl leading-relaxed mb-8 font-light">
+                I am a Full Stack Developer with 3.5 years of industry experience, currently distinguishing myself at the University of Utah with a 3.9 GPA in my Master&apos;s program.
               </p>
 
-              <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                At Accenture, I didn&apos;t just write code; I engineered solutions. I built <span className="font-bold text-white">scalable backend systems</span> with Spring Boot and crafted <span className="font-bold text-white">high-performance UIs</span> in React. My focus is always on impact—whether that&apos;s <span className="font-bold text-white">optimizing critical data pipelines</span> or delivering <span className="font-bold text-white">seamless user experiences</span> for complex enterprise applications.
+              <p className="text-gray-700 dark:text-gray-200 text-xl md:text-2xl leading-relaxed mb-8 font-light">
+                At Accenture, I didn&apos;t just write code; I engineered solutions. I built scalable backend systems with Spring Boot and crafted high-performance UIs in React. My focus is always on impact—whether that&apos;s optimizing critical data pipelines or delivering seamless user experiences for complex enterprise applications.
               </p>
 
-              <p className="text-gray-300 text-lg leading-relaxed">
-                I&apos;m obsessed with <span className="font-bold text-white">clean architecture</span> and <span className="font-bold text-white">system design</span>. When I&apos;m not debugging complex distributed systems, you&apos;ll find me mentoring students or diving into the latest in <span className="font-bold text-white">cloud computing</span> and <span className="font-bold text-white">AI</span>.
+              <p className="text-gray-700 dark:text-gray-200 text-xl md:text-2xl leading-relaxed font-light">
+                I&apos;m obsessed with clean architecture and system design. When I&apos;m not debugging complex distributed systems, you&apos;ll find me mentoring students or diving into the latest in cloud computing and AI.
               </p>
             </div>
           </TiltCard>

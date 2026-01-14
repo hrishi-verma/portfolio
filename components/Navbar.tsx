@@ -43,28 +43,34 @@ export default function Navbar() {
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
                     <div className="flex-shrink-0">
-                        <Link href="/" className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity">
+                        <Link
+                            href="/"
+                            className="text-2xl font-bold tracking-tight text-blue-600 hover:opacity-80 transition-opacity"
+                        >
                             HV
                         </Link>
                     </div>
 
                     {/* Desktop Menu */}
-                    <div className="hidden md:block">
-                        <div className="ml-10 flex items-center space-x-6">
+                    <div className="hidden md:flex items-center space-x-1">
+                        <div className="flex items-center space-x-1 mr-6">
                             {navLinks.map((link) => (
-                                <a
+                                <Link
                                     key={link.name}
                                     href={link.href}
-                                    className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors hover:bg-gray-800/50"
+                                    className="relative group px-4 py-2 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors rounded-full hover:bg-[var(--bg-card)]"
                                 >
                                     {link.name}
-                                </a>
+                                </Link>
                             ))}
+                        </div>
+
+                        <div className="flex items-center space-x-3 pl-6 border-l border-[var(--border-color)]">
                             <a
                                 href="/resume.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full text-sm font-medium hover:shadow-lg hover:shadow-purple-500/20 transition-all hover:scale-105"
+                                className="flex items-center gap-2 px-5 py-2 bg-blue-600 text-white rounded-full text-sm font-semibold hover:bg-blue-700 transition-all transform hover:scale-[1.02] active:scale-95 shadow-sm"
                             >
                                 <FileText className="w-4 h-4" />
                                 Resume

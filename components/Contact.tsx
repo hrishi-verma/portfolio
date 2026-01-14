@@ -152,7 +152,7 @@ export default function Contact() {
                 ? 'bg-green-600 text-white cursor-default'
                 : status === 'error'
                   ? 'bg-red-600 text-white'
-                  : 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:shadow-lg hover:shadow-purple-500/50 hover:scale-105'
+                  : 'bg-blue-600 text-white hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 hover:scale-105'
                 }`}
             >
               {status === 'submitting' ? (

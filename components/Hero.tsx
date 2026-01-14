@@ -20,24 +20,29 @@ export default function Hero() {
   return (
     <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
       <div className={`max-w-4xl mx-auto text-center relative z-10 transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-[var(--text-primary)] mb-8 tracking-tight">
           Hi, I&apos;m{' '}
-          <a
-            href="https://linkedin.com/in/hrishikesh-verma"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent hover:from-blue-300 hover:to-purple-400 transition-all cursor-pointer"
-          >
-            Hrishikesh Verma
-          </a>
+          <span className="block mt-2 md:inline md:mt-0">
+            <a
+              href="https://linkedin.com/in/hrishikesh-verma"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-white hover:underline decoration-white decoration-2 underline-offset-4 transition-all cursor-pointer"
+            >
+              Hrishikesh Verma
+            </a>
+          </span>
         </h1>
 
-        <p className="text-xl md:text-2xl text-gray-300 mb-4">
+        <p className="text-xl md:text-2xl text-[var(--text-secondary)] mb-6 font-medium tracking-wide">
           Software Developer &amp; Master&apos;s Student
         </p>
 
-        <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-          <span className="font-bold text-white">Senior Software Engineer</span> specializing in <span className="font-bold text-white">scalable distributed systems</span>, <span className="font-bold text-white">algorithms</span>, and <span className="font-bold text-white">creating impactful software</span>.
+        <p className="text-lg md:text-xl text-[var(--text-muted)] mb-10 max-w-2xl mx-auto leading-relaxed">
+          <span className="font-semibold text-[var(--text-primary)]">Senior Software Engineer</span> specializing in{' '}
+          <span className="text-[var(--text-primary)]">scalable distributed systems</span>,{' '}
+          <span className="text-[var(--text-primary)]">algorithms</span>, and{' '}
+          <span className="text-[var(--text-primary)]">high-impact software</span>.
         </p>
 
         <div className="flex gap-4 justify-center mb-12">
@@ -65,10 +70,10 @@ export default function Hero() {
           </a>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
+        <div className="flex flex-col sm:flex-row gap-5 items-center justify-center">
           <a
             href="#contact"
-            className="inline-block px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-medium hover:shadow-lg hover:shadow-purple-500/50 transition-all hover:scale-105"
+            className="inline-block px-8 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 transition-all hover:scale-105"
           >
             Get in Touch
           </a>

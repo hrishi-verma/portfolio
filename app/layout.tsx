@@ -24,7 +24,6 @@ export const metadata: Metadata = {
       { url: '/favicon.png', sizes: '16x16', type: 'image/png' },
     ],
     apple: '/favicon.png',
-    api: '/favicon.png',
   },
   openGraph: {
     title: 'Hrishikesh Verma | Software Developer',

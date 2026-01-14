@@ -18,9 +18,9 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
+    <section className="min-h-screen flex flex-col justify-center pt-32 md:pt-40 px-4 relative overflow-hidden">
       <div className={`max-w-4xl mx-auto text-center relative z-10 transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-[var(--text-primary)] mb-8 tracking-tight">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-[var(--text-primary)] mb-6 tracking-tight">
           Hi, I&apos;m{' '}
           <span className="block mt-2 md:inline md:mt-0">
             <a
@@ -34,18 +34,18 @@ export default function Hero() {
           </span>
         </h1>
 
-        <p className="text-xl md:text-2xl text-[var(--text-secondary)] mb-6 font-medium tracking-wide">
+        <p className="text-xl md:text-2xl text-[var(--text-secondary)] mb-4 font-medium tracking-wide">
           Software Developer &amp; Master&apos;s Student
         </p>
 
-        <p className="text-lg md:text-xl text-[var(--text-muted)] mb-10 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-lg md:text-xl text-[var(--text-muted)] mb-8 max-w-2xl mx-auto leading-relaxed">
           <span className="font-semibold text-[var(--text-primary)]">Senior Software Engineer</span> specializing in{' '}
           <span className="text-[var(--text-primary)]">scalable distributed systems</span>,{' '}
           <span className="text-[var(--text-primary)]">algorithms</span>, and{' '}
           <span className="text-[var(--text-primary)]">high-impact software</span>.
         </p>
 
-        <div className="flex gap-4 justify-center mb-12">
+        <div className="flex gap-4 justify-center mb-10">
           <a
             href="https://github.com/hrishi-verma"
             target="_blank"
@@ -86,7 +86,7 @@ export default function Hero() {
           </a>
         </div>
 
-        <div className="mt-16 pt-10 border-t border-gray-800/50 w-full max-w-2xl mx-auto">
+        <div className="mt-12 pt-10 border-t border-gray-800/50 w-full max-w-2xl mx-auto">
           <p className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-6">Technologies</p>
           <div className="flex gap-8 items-center justify-center flex-wrap">
             <Tooltip content="Next.js">

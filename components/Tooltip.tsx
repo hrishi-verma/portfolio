@@ -24,10 +24,10 @@ export default function Tooltip({ children, content }: TooltipProps) {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-gray-900 border border-gray-700 text-white text-xs rounded-md whitespace-nowrap z-50 shadow-xl pointer-events-none"
+                        className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-xs rounded-md whitespace-nowrap z-50 shadow-xl pointer-events-none"
                     >
                         {content}
-                        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-900 border-r border-b border-gray-700 transform rotate-45" />
+                        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white dark:bg-gray-900 border-r border-b border-gray-200 dark:border-gray-700 transform rotate-45" />
                     </motion.div>
                 )}
             </AnimatePresence>

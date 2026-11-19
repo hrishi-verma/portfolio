@@ -9,7 +9,7 @@ export const metadata: Metadata = {
         description: 'Research paper on using Convolutional Neural Networks and OpenCV for autonomous driving simulation.',
         type: 'article',
         authors: ['Hrishikesh Verma'],
-        publishedTime: '2024-05-15', // Approximate date
+        publishedTime: '2020-05-01',
     },
     other: {
         'citation_title': 'Autonomous Driving Simulation Using Computer Vision',

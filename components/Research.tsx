@@ -22,7 +22,7 @@ export default function Research() {
             title: "Autonomous Driving Simulation Using Computer Vision",
             abstract: "This research presents a robust system for autonomous driving simulation utilizing Convolutional Neural Networks (CNNs) and OpenCV, achieving 90% accuracy in obstacle detection.",
             authors: ["Hrishikesh Verma"],
-            year: "2024",
+            year: "2020",
             tags: ["Computer Vision", "CNN", "OpenCV", "Machine Learning"],
             pdfUrl: "/papers/autonomous-driving-simulation.pdf",
             pageUrl: "/research/autonomous-driving"

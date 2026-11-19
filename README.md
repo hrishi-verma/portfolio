@@ -1,72 +1,103 @@
-# Hrishikesh Verma Portfolio
+# Hrishikesh Verma — Portfolio
 
-A professional portfolio website engineered to showcase software development projects, academic research, and professional experience. Built with a focus on performance, accessibility, and modern design principles.
+Personal portfolio site, live at **[hrishikeshverma.com](https://hrishikeshverma.com)**.
 
-## Overview
+Single-page Next.js app (hero, about, skills, experience, projects, research, achievements, contact) plus a standalone research paper page at `/research/autonomous-driving`. Dark theme by default with a light theme toggle, an animated canvas background, theme-matched ambient music, and a custom star cursor.
 
-This project represents a modern personal web identity, featuring a high-performance architecture powered by Next.js 16 and React 19. The interface implements advanced interaction patterns, including a custom WebGL-style cursor system, physics-based animations, and a responsive layout that adapts seamlessly across appliances.
+Why things are built the way they are is recorded in [DECISIONS.md](DECISIONS.md).
 
-## Key Features
+## Stack
 
-- **Advanced Technology Stack**: Utilizes the latest Next.js 16 App Router and React 19 Server Components for optimal rendering performance.
-- **Interactive UI/UX**: Features a bespoke custom cursor system with star-trail effects and hover-state interactions, built using Framer Motion.
-- **Rich Media Integration**: Supports hybrid media rendering for project showcases, including video embeds with click-to-play functionality and high-fidelity thumbnails.
-- **Academic Research Section**: Dedicated modules for displaying research publications with download capabilities and citation metadata.
-- **Adaptive Design**: Fully responsive layout constructed with Tailwind CSS v4, supporting dark mode and mobile-first breakpoints.
-- **SEO Optimized**: Implements comprehensive metadata, semantic HTML structure, and favicon standardization for search engine visibility.
+| Area | Choice |
+|---|---|
+| Framework | Next.js 16 (App Router), React 19, React Compiler enabled |
+| Language | TypeScript |
+| Styling | Tailwind CSS v4 (CSS-first config, no `tailwind.config.js`) |
+| Animation | Framer Motion (scroll-in variants), canvas for the hero background |
+| Icons | lucide-react, react-icons |
+| Contact form | Formspree (`https://formspree.io/f/mykzjdpw`) |
+| Hosting | Vercel, auto-deploys `main` to hrishikeshverma.com |
 
-## Technical Architecture
+## Run locally
 
-### Core Dependencies
-- **Next.js 16**: (App Router)
-- **React 19**: (Server & Client Components)
-- **TypeScript**: (Static Typing)
-- **Tailwind CSS v4**: (Utility-first Styling)
-
-### UI Libraries
-- **Framer Motion**: (Orchestration of complex animations)
-- **Lucide React**: (Icon system)
-
-## Getting Started
-
-### Prerequisites
-- Node.js >= 20.0.0
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/hrishi-verma/portfolio.git
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-The application will be available at `http://localhost:3000`.
-
-## Building for Production
-
-To create an optimized production build:
+Requires Node.js 20+.
 
 ```bash
-npm run build
-npm start
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-## Structure
+Checks to run before pushing (there is no unit test suite):
 
-- `/app`: Application routes and layouts
-- `/components`: Reusable UI components
-- `/public`: Static assets (images, favicons)
-- `/lib`: Utility functions and helper modules
+```bash
+npm run lint       # ESLint, should report 0 problems
+npx tsc --noEmit   # type check
+npm run build      # production build, all 7 routes should prerender as static
+```
 
-## License
+## Deploy
 
-This project is licensed under the MIT License.
+Push to `main` on [github.com/hrishi-verma/portfolio](https://github.com/hrishi-verma/portfolio). Vercel builds and deploys automatically, so there is nothing else to run. The custom domain is configured in the Vercel project settings.
+
+## Project structure
+
+```
+app/
+  layout.tsx                    SEO metadata, fonts, global providers and chrome (cursor, background, navbar, status)
+  page.tsx                      Home page: stacks the section components in order
+  globals.css                   Tailwind import, theme variables, light-mode overrides, keyframes
+  research/autonomous-driving/  Research paper page with Google Scholar citation meta tags
+  sitemap.ts, robots.ts         Generated sitemap.xml and robots.txt
+components/
+  Hero, About, Skills, Experience, Projects, Research, Achievements, Contact   Page sections
+  Navbar.tsx                    Section links, resume button, theme toggle, music toggle
+  HeroArt.tsx                   Canvas background: stars, moon and shooting stars (dark), sun and clouds (light)
+  CustomCursor.tsx              Star cursor; disabled on touch devices
+  MusicPlayer.tsx               Ambient track per theme
+  SystemStatus.tsx              Online indicator and ping latency badge
+  TiltCard.tsx, Tooltip.tsx     Shared UI pieces
+contexts/ThemeContext.tsx       Theme state (dark default, saved in localStorage)
+hooks/useScrollAnimation.ts     Framer Motion variants shared by sections
+public/
+  resume.pdf                    The "Resume" / "Download Resume" file
+  thumbnails/                   Project card images
+  papers/                       Research paper PDF
+  audio/                        dark-ambient.mp3, light-lofi.mp3
+  images/cloud.png              Light-theme cloud sprite
+```
+
+## Updating content
+
+All content is plain data inside the components, so most updates are a single-file edit.
+
+| To change | Edit |
+|---|---|
+| Hero tagline and subtitle | `components/Hero.tsx` |
+| Bio and stat cards (GPA, years, mentored) | `components/About.tsx` |
+| Jobs | `experiences` array in `components/Experience.tsx` |
+| Skill categories | `skillCategories` in `components/Skills.tsx` |
+| Projects | `projects` array in `components/Projects.tsx` |
+| Research card | `components/Research.tsx`; full page in `app/research/autonomous-driving/page.tsx` |
+| Achievements | `components/Achievements.tsx` |
+| Email and social links | `components/Hero.tsx`, `components/Contact.tsx` |
+| Page title and search description | `metadata` in `app/layout.tsx` |
+| Resume download | replace `public/resume.pdf` |
+
+**Source of truth for content:** the resumes in `~/Hrishikesh Docs/Resume/latest/`. The site follows the Python:React variant. When the resume changes, update the site to match, and copy that PDF to `public/resume.pdf`.
+
+**Adding a project:** add an object to `projects` with `title`, `description`, `tech`, `highlights`, and optionally `githubUrl`, `liveUrl`, `thumbnail` (a file in `public/thumbnails/`) or `video` (a YouTube embed URL like `https://www.youtube.com/embed/<id>`, shown as a click-to-play player). Without a thumbnail or video, the card shows a gradient block with the project title.
+
+## Theming notes
+
+- Colors are written with dark-theme Tailwind classes (`text-white`, `bg-gray-800`, ...). Light mode is done by overrides in `globals.css` under `.light`, which remap those classes to the `--text-*` / `--bg-*` variables.
+- Because `.light .text-white` turns white text dark, solid accent buttons need an exemption. `globals.css` keeps white text on `bg-blue-600`, `bg-green-600` and `bg-purple-600`. If you add a solid button in another color, add it to that rule.
+- Check both themes and a phone-width viewport after any visual change.
+
+## Troubleshooting
+
+| Problem | Fix |
+|---|---|
+| Styles don't update in dev, or new CSS rules are missing | Stop the server, `rm -rf .next`, `npm run dev`. Turbopack's cache can go stale, especially after running `npm run build` while the dev server is up. |
+| Port 3000 in use | `npm run dev -- -p 3001` |
+| Hydration warning mentioning `data-sharkid` or other unknown attributes | Caused by a browser extension (password manager) editing form fields. Not a site bug; check in a clean profile. |
+| "Autoplay blocked" in the console | Expected. Browsers block audio until the visitor interacts; the music toggle starts it. |

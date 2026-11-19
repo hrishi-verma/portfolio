@@ -27,15 +27,15 @@ export default function About() {
           <TiltCard tiltAmount={2}>
             <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-10 border border-gray-700 text-center">
               <p className="text-gray-700 dark:text-gray-200 text-xl md:text-2xl leading-relaxed mb-8 font-light">
-                I am a Full Stack Developer with 3.5 years of industry experience, currently distinguishing myself at the University of Utah with a 3.9 GPA in my Master&apos;s program.
+                I am a Full Stack Developer with 3.5+ years of industry experience. I graduated with an MS in Computer Science from the University of Utah (Aug 2024 – May 2026) with a 3.97 GPA, after a BE in Information Science from VTU, Bangalore (2016–2020). Today I&apos;m a Research Intern (Software Engineering) at the University of Utah, building MCP servers for agentic experiment runs.
               </p>
 
               <p className="text-gray-700 dark:text-gray-200 text-xl md:text-2xl leading-relaxed mb-8 font-light">
-                At Accenture, I didn&apos;t just write code; I engineered solutions. I built scalable backend systems with Spring Boot and crafted high-performance UIs in React. My focus is always on impact—whether that&apos;s optimizing critical data pipelines or delivering seamless user experiences for complex enterprise applications.
+                At Accenture, I didn&apos;t just write code; I engineered solutions. Over 3.5+ years on fintech platforms, I built scalable Spring Boot and Python backends and high-performance React UIs. My focus is always on impact, whether that&apos;s tuning data-layer performance or delivering seamless user experiences for complex enterprise applications.
               </p>
 
               <p className="text-gray-700 dark:text-gray-200 text-xl md:text-2xl leading-relaxed font-light">
-                I&apos;m obsessed with clean architecture and system design. When I&apos;m not debugging complex distributed systems, you&apos;ll find me mentoring students or diving into the latest in cloud computing and AI.
+                I&apos;m obsessed with clean architecture and system design. When I&apos;m not debugging complex distributed systems, you&apos;ll find me mentoring students or exploring Generative AI, from RAG pipelines to LLM-powered tools.
               </p>
             </div>
           </TiltCard>
@@ -51,7 +51,7 @@ export default function About() {
           <motion.div variants={staggerItemVariants}>
             <TiltCard className="h-full">
               <div className="bg-gray-800/30 backdrop-blur-sm rounded-xl p-6 border border-gray-700 text-center h-full">
-                <div className="text-3xl font-bold text-blue-400 mb-2">3.9</div>
+                <div className="text-3xl font-bold text-blue-400 mb-2">3.97</div>
                 <div className="text-gray-400">GPA at UofU</div>
               </div>
             </TiltCard>
@@ -59,7 +59,7 @@ export default function About() {
           <motion.div variants={staggerItemVariants}>
             <TiltCard className="h-full">
               <div className="bg-gray-800/30 backdrop-blur-sm rounded-xl p-6 border border-gray-700 text-center h-full">
-                <div className="text-3xl font-bold text-purple-400 mb-2">3.5 Years</div>
+                <div className="text-3xl font-bold text-purple-400 mb-2">3.5+ Years</div>
                 <div className="text-gray-400">Full Stack Experience</div>
               </div>
             </TiltCard>

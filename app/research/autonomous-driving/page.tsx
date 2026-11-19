@@ -71,7 +71,7 @@ export default function ResearchPaper() {
                     <div className="mt-12 border-t border-gray-200 dark:border-gray-800 pt-8">
                         <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Citation</h3>
                         <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg font-mono text-sm text-gray-600 dark:text-gray-400 overflow-x-auto border border-gray-200 dark:border-gray-800">
-                            Verma, H. "Autonomous Driving Simulation Using Computer Vision." Vol. 02, Issue 05 (May 2020).
+                            Verma, H. &ldquo;Autonomous Driving Simulation Using Computer Vision.&rdquo; Vol. 02, Issue 05 (May 2020).
                         </div>
                     </div>
                 </article>

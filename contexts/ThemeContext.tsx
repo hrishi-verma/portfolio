@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useSyncExternalStore, ReactNode } from 'react';
 
 type Theme = 'light' | 'dark';
 
@@ -11,38 +11,50 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+const THEME_EVENT = 'themechange';
+
+// Fallback when localStorage is blocked (private mode, disabled site data)
+let memoryTheme: Theme | null = null;
+
+// Saved theme lives in localStorage; default remains dark - no system preference check
+function readTheme(): Theme {
+    try {
+        return localStorage.getItem('theme') === 'light' ? 'light' : 'dark';
+    } catch {
+        return memoryTheme ?? 'dark';
+    }
+}
+
+function subscribe(onChange: () => void) {
+    window.addEventListener(THEME_EVENT, onChange);
+    window.addEventListener('storage', onChange);
+    return () => {
+        window.removeEventListener(THEME_EVENT, onChange);
+        window.removeEventListener('storage', onChange);
+    };
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
-    const [theme, setTheme] = useState<Theme>('dark');
-    const [mounted, setMounted] = useState(false);
+    // Server snapshot is 'dark', so hydration matches the server HTML before switching to the saved theme
+    const theme = useSyncExternalStore(subscribe, readTheme, () => 'dark' as Theme);
 
     useEffect(() => {
-        setMounted(true);
-        // Check localStorage for saved theme preference
-        const savedTheme = localStorage.getItem('theme') as Theme | null;
-        if (savedTheme) {
-            setTheme(savedTheme);
-        }
-        // Default remains dark - no system preference check
-    }, []);
-
-    useEffect(() => {
-        if (!mounted) return;
-
-        // Update document class and localStorage
+        // Update document class
         const root = document.documentElement;
         root.classList.remove('light', 'dark');
         root.classList.add(theme);
-        localStorage.setItem('theme', theme);
-    }, [theme, mounted]);
+    }, [theme]);
 
     const toggleTheme = () => {
-        setTheme(prevTheme => prevTheme === 'dark' ? 'light' : 'dark');
+        const next: Theme = theme === 'dark' ? 'light' : 'dark';
+        memoryTheme = next;
+        try {
+            localStorage.setItem('theme', next);
+        } catch {
+            // Storage unavailable; memoryTheme keeps the choice for this visit
+        }
+        window.dispatchEvent(new Event(THEME_EVENT));
     };
-
-    // Prevent flash of wrong theme
-    if (!mounted) {
-        return <>{children}</>;
-    }
 
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme }}>

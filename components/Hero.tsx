@@ -5,11 +5,9 @@ import { Github, Linkedin, Mail } from 'lucide-react';
 import { FaJava, FaAws, FaDocker, FaReact } from 'react-icons/fa';
 import { SiSpringboot, SiNextdotjs } from 'react-icons/si';
 import Tooltip from './Tooltip';
-import { useTheme } from '@/contexts/ThemeContext';
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false);
-  const { theme } = useTheme();
 
   useEffect(() => {
     // Delay slightly to ensure animation triggers after initial paint
@@ -35,14 +33,14 @@ export default function Hero() {
         </h1>
 
         <p className="text-xl md:text-2xl text-[var(--text-secondary)] mb-4 font-medium tracking-wide">
-          Software Developer &amp; Master&apos;s Student
+          Software Engineer &amp; Research Intern
         </p>
 
         <p className="text-lg md:text-xl text-[var(--text-muted)] mb-8 max-w-2xl mx-auto leading-relaxed">
-          <span className="font-semibold text-[var(--text-primary)]">Senior Software Engineer</span> specializing in{' '}
-          <span className="text-[var(--text-primary)]">scalable distributed systems</span>,{' '}
-          <span className="text-[var(--text-primary)]">algorithms</span>, and{' '}
-          <span className="text-[var(--text-primary)]">high-impact software</span>.
+          <span className="font-semibold text-[var(--text-primary)]">Full-stack software engineer</span> with 3.5+ years building{' '}
+          <span className="text-[var(--text-primary)]">Python and Java backends</span> and{' '}
+          <span className="text-[var(--text-primary)]">React/TypeScript frontends</span> for fintech platforms serving 1M+ users, plus{' '}
+          <span className="text-[var(--text-primary)]">GenAI features</span> with RAG, MCP, and LLM APIs.
         </p>
 
         <div className="flex gap-4 justify-center mb-10">

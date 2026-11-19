@@ -1,6 +1,6 @@
 'use client';
 
-import { Award, Users, Trophy, TrendingUp } from 'lucide-react';
+import { Award, Trophy, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { fadeUpVariants, staggerContainerVariants, staggerItemVariants } from '@/hooks/useScrollAnimation';
 import TiltCard from './TiltCard';
@@ -10,19 +10,19 @@ export default function Achievements() {
     {
       icon: TrendingUp,
       title: "Fast-Track Promotion at Accenture",
-      description: "Received 2 promotions within first 2 years of work, rapidly rising from a Junior Developer to a Senior Software Engineer due to consistent high-impact delivery and technical leadership",
+      description: "Received 2 promotions within first 2 years of work, rising from Associate Software Engineer to Software Engineer to Senior Software Engineer due to consistent high-impact delivery and technical leadership",
       period: "2021 - 2024"
     },
     {
       icon: Award,
       title: "DSA & Coding Bootcamp Instructor",
-      description: "Promoted to instructor at TechHub, mentoring 100+ engineering students with in-depth lessons on Trees, DP, Graphs, and Trees. Achieved 95% average student satisfaction rate",
+      description: "Promoted to instructor at TechHub, mentoring 100+ engineering students with in-depth lessons on Tries, DP, Graphs, and Trees. Achieved 95% average student satisfaction rate",
       period: "Multiple cohorts"
     },
     {
       icon: Trophy,
-      title: "Cultural Fest Organizer",
-      description: "Secured 1st prize in the Verve 2018 and 2019 inter-college cultural fest at the University, outperforming 200+ participants in prestigious hackathons including ValuePitch and UiPath Automation",
+      title: "Coding Competition Winner (Verve 2018 & 2019)",
+      description: "Won 1st prize in the Verve 2018 and 2019 coding competitions at university, outperforming 200+ participants. Also participated in hackathons including ValuePitch and UiPath Automation Hackathon",
       period: "2018-2019"
     }
   ];

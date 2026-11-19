@@ -7,7 +7,7 @@ import { useTheme } from '@/contexts/ThemeContext';
 export default function MusicPlayer() {
     const { theme } = useTheme();
     const [isPlaying, setIsPlaying] = useState(true); // Default to ON
-    const [hasInitialized, setHasInitialized] = useState(false);
+    const hasInitialized = useRef(false);
 
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const currentTrackRef = useRef<string>('');
@@ -19,7 +19,7 @@ export default function MusicPlayer() {
 
     // Initialize audio on first mount
     useEffect(() => {
-        if (hasInitialized) return;
+        if (hasInitialized.current) return;
 
         const audio = new Audio(getAudioSrc());
         audio.loop = true;
@@ -36,12 +36,12 @@ export default function MusicPlayer() {
             setIsPlaying(false);
         });
 
-        setHasInitialized(true);
-    }, [getAudioSrc, hasInitialized]);
+        hasInitialized.current = true;
+    }, [getAudioSrc]);
 
     // Handle theme changes - switch track ONLY if currently playing
     useEffect(() => {
-        if (!hasInitialized) return;
+        if (!hasInitialized.current) return;
 
         const newSrc = getAudioSrc();
 
@@ -69,7 +69,7 @@ export default function MusicPlayer() {
                 });
             }
         }
-    }, [theme, getAudioSrc, hasInitialized, isPlaying]);
+    }, [theme, getAudioSrc, isPlaying]);
 
     // Handle play/pause toggle
     const toggleMusic = () => {

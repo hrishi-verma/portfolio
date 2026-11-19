@@ -112,6 +112,13 @@ textarea {
   color: var(--text-primary);
 }
 
+/* Solid accent buttons keep white text */
+.light .bg-blue-600.text-white,
+.light .bg-green-600.text-white,
+.light .bg-purple-600.text-white {
+  color: #fff;
+}
+
 .light .text-gray-300 {
   color: var(--text-secondary);
 }

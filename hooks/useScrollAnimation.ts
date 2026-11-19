@@ -5,13 +5,14 @@ export const useScrollAnimation = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
+        const node = ref.current;
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
                     setIsVisible(true);
                     // Once visible, stop observing
-                    if (ref.current) {
-                        observer.unobserve(ref.current);
+                    if (node) {
+                        observer.unobserve(node);
                     }
                 }
             },
@@ -21,13 +22,13 @@ export const useScrollAnimation = () => {
             }
         );
 
-        if (ref.current) {
-            observer.observe(ref.current);
+        if (node) {
+            observer.observe(node);
         }
 
         return () => {
-            if (ref.current) {
-                observer.unobserve(ref.current);
+            if (node) {
+                observer.unobserve(node);
             }
         };
     }, []);

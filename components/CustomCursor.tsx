@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useSyncExternalStore } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 
 export default function CustomCursor() {
@@ -12,8 +12,16 @@ export default function CustomCursor() {
     const starRef = useRef<HTMLDivElement>(null);
     const requestRef = useRef<number>(0);
     const { theme } = useTheme();
+    // Touch devices keep the native cursor; server snapshot is false so hydration matches
+    const isTouch = useSyncExternalStore(
+        () => () => { },
+        () => 'ontouchstart' in window,
+        () => false
+    );
 
     useEffect(() => {
+        if (isTouch) return;
+
         const handleMouseMove = (e: MouseEvent) => {
             const { clientX, clientY } = e;
             cursorRef.current = { x: clientX, y: clientY };
@@ -67,14 +75,12 @@ export default function CustomCursor() {
             document.documentElement.removeEventListener('mouseenter', handleMouseEnter);
             cancelAnimationFrame(requestRef.current);
         };
-    }, []);
-
-    if (typeof window !== 'undefined' && 'ontouchstart' in window) {
-        return null;
-    }
+    }, [isTouch]);
 
     // Force hide cursor via JS loop to ensure it stays hidden
     useEffect(() => {
+        if (isTouch) return;
+
         // Immediate override
         document.documentElement.style.cursor = 'none';
         document.body.style.cursor = 'none';
@@ -92,17 +98,16 @@ export default function CustomCursor() {
             document.documentElement.style.cursor = '';
             document.body.style.cursor = '';
         };
-    }, []);
+    }, [isTouch]);
+
+    if (isTouch) {
+        return null;
+    }
 
     const cursorColor = theme === 'dark' ? '#FCD34D' : '#B45309'; // Amber-300 (Dark) / Amber-700 (Light)
 
     return (
         <>
-            <style jsx global>{`
-                * {
-                    cursor: none !important;
-                }
-            `}</style>
             <div className="custom-cursor-layer fixed inset-0 pointer-events-none z-[9999] overflow-hidden">
                 <div
                     ref={starRef}

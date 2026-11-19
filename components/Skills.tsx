@@ -7,28 +7,32 @@ import TiltCard from './TiltCard';
 export default function Skills() {
   const skillCategories = [
     {
+      title: "GenAI / ML",
+      skills: ["OpenAI & Claude APIs", "RAG", "FAISS", "pgvector", "Prompt Engineering", "MCP", "Claude Code", "PyTorch", "scikit-learn", "NetworkX"]
+    },
+    {
       title: "Languages",
-      skills: ["JavaScript", "TypeScript", "Python", "Java", "C", "C++", "Rust", "Assembly", "Shell Scripting", "Bash Scripting", "CSS", "SCSS", "HTML"]
+      skills: ["Python", "Java", "TypeScript", "JavaScript (ES6+)", "SQL", "C++"]
     },
     {
       title: "Frontend",
-      skills: ["JavaScript", "Next.js", "TypeScript", "Vue.js", "ReactJS", "Angular", "Redux", "Tailwind CSS", "Material UI", "D3.js", "Webpack", "Jest", "Responsive Design", "Framer Motion", "API Integration"]
+      skills: ["React.js", "Next.js", "Vue.js", "Angular", "Redux", "HTML5/CSS3", "Tailwind CSS", "Material-UI", "D3.js", "WCAG"]
     },
     {
-      title: "Backend",
-      skills: ["Node.js", "Express.js", "Spring Boot", "GraphQL", "gRPC", "Microservices", "System Design", "WebSockets"]
-    },
-    {
-      title: "Databases",
-      skills: ["MongoDB", "PostgreSQL", "MySQL", "DynamoDB", "Redis", "Cassandra", "Elasticsearch", "Apache Kafka"]
+      title: "Backend & APIs",
+      skills: ["FastAPI", "Spring Boot", "Hibernate", "Node.js", "Express.js", "REST", "GraphQL", "gRPC", "Microservices", "OAuth 2.0/JWT"]
     },
     {
       title: "Cloud & DevOps",
-      skills: ["AWS", "Google Cloud", "Docker", "Kubernetes", "Terraform", "Jenkins", "CI/CD", "Linux", "Nginx"]
+      skills: ["AWS (EKS, EC2, S3, SQS, SNS)", "Azure", "Google Cloud", "Docker", "Kubernetes", "Terraform", "Jenkins", "GitHub Actions", "Agile/Scrum"]
     },
     {
-      title: "Machine Learning & Tools",
-      skills: ["PyTorch", "TensorFlow", "Pandas", "NumPy", "Scikit-learn", "LLMs", "Git", "Jira", "Agile"]
+      title: "Data & Messaging",
+      skills: ["PostgreSQL", "MySQL", "MongoDB", "Cassandra", "Redis", "Apache Kafka", "RabbitMQ", "WebSockets"]
+    },
+    {
+      title: "Testing & Observability",
+      skills: ["Jest", "JUnit", "Playwright", "Grafana", "Prometheus", "New Relic", "Kibana"]
     }
   ];
 

@@ -21,7 +21,8 @@ export default function Contact() {
       const response = await fetch("https://formspree.io/f/mykzjdpw", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Accept": "application/json"
         },
         body: JSON.stringify(formData)
       });
@@ -34,7 +35,7 @@ export default function Contact() {
         setStatus('error');
         setTimeout(() => setStatus('idle'), 5000);
       }
-    } catch (error) {
+    } catch {
       setStatus('error');
       setTimeout(() => setStatus('idle'), 5000);
     }
@@ -174,7 +175,7 @@ export default function Contact() {
 
       {/* Footer */}
       <div className="mt-20 text-center text-gray-500">
-        <p>© 2024 Hrishikesh Verma. Built with Next.js & Tailwind CSS.</p>
+        <p>© {new Date().getFullYear()} Hrishikesh Verma. Built with Next.js & Tailwind CSS.</p>
       </div>
     </section>
   );

@@ -58,22 +58,34 @@ export default function Projects() {
   const projects = [
 
     {
+      title: "Loan Document RAG Assistant",
+      description: "Built a Python RAG service (hybrid BM25 + FAISS, reranking, GPT-4o) for a full-stack loan document assistant with a React/TypeScript UI and Spring Boot API, hitting 85% recall@5 with cited answers in under 3s.",
+      tech: ["Python", "FAISS", "GPT-4o", "React", "Spring Boot"],
+      highlights: ["85% recall@5", "Cited answers in under 3s"]
+    },
+    {
       title: "Motif-Based Graph Compression",
-      description: "Developed a motif-based graph compression algorithm achieving 26% reduction in graph size while preserving accuracy. Built automated pipeline processing 486 groups with reproducible analysis.",
-      tech: ["Python", "NetworkX", "Graph Algorithms", "Data Science"],
-      highlights: ["26% size reduction", "486 recurring patterns identified"],
+      description: "Researched motif-based graph compression in Python/NetworkX, mining 486 motifs to shrink a 4K-edge network 26% losslessly, served through a FastAPI backend and React/D3.js explorer cutting validation from 6+ hours to 20 min.",
+      tech: ["Python", "NetworkX", "FastAPI", "D3.js"],
+      highlights: ["26% lossless shrink", "486 motifs mined", "Validation: 6+ hours to 20 min"],
       githubUrl: "https://github.com/hrishi-verma/motif-based-graph-compression",
       liveUrl: "https://hrishi-verma.github.io/motif-based-graph-compression/",
       thumbnail: "/thumbnails/motif-graph.png"
     },
     {
-      title: "Sneaker Marketplace",
-      description: "Built full-stack marketplace with React, Express, and PostgreSQL featuring real-time inventory updates. Achieved sub-200ms API response times under 5,000 requests/second with 98% payment success rate.",
-      tech: ["React", "Express.js", "PostgreSQL", "Stripe API"],
-      highlights: ["Sub-200ms response", "98% payment success"],
-      githubUrl: "https://github.com/hrishi-verma/Sneaker-Marketplace",
-      liveUrl: "https://hrishi-verma.github.io/Sneaker-Marketplace/",
-      thumbnail: "/thumbnails/sneaker-marketplace.png"
+      title: "InsightHub",
+      description: "Engineered a log aggregation platform with Spring Boot gRPC ingestion into Kafka, PostgreSQL storage, Python Isolation Forest anomaly detection, and a React/GraphQL SLO dashboard on Kubernetes, sustaining 50K+ logs/min in load tests.",
+      tech: ["Spring Boot", "gRPC", "Kafka", "Python", "PostgreSQL", "Kubernetes", "GraphQL"],
+      highlights: ["50K+ logs/min", "Anomaly Detection"],
+      githubUrl: "https://github.com/hrishi-verma/InsightHub",
+      liveUrl: "COMING_SOON",
+      thumbnail: "/thumbnails/insighthub.png"
+    },
+    {
+      title: "Collaborative Code Editor",
+      description: "Used Claude Code to build a React/TypeScript collaborative editor with CRDT sync over WebSockets, Redis pub/sub for horizontal scaling, JWT auth, and sandboxed Docker execution, load-tested at 20+ sessions with sub-100 ms sync.",
+      tech: ["React", "TypeScript", "Node.js", "WebSockets", "CRDTs", "Redis"],
+      highlights: ["20+ sessions", "Sub-100 ms sync"]
     },
     {
       title: "RaptorProject",
@@ -104,21 +116,12 @@ export default function Projects() {
       thumbnail: "/thumbnails/echoes-of-nature.png"
     },
     {
-      title: "InsightHub",
-      description: "Architected a real-time log monitoring system using Kafka, Node.js, and Python. Integrated an ML engine with Isolation Forest models to detect anomalies and latency spikes in real-time, visualizing data on a Next.js dashboard.",
-      tech: ["Kafka", "Node.js", "Python", "Next.js", "PostgreSQL", "Docker", "scikit-learn"],
-      highlights: ["Real-time Anomaly Detection", "Scalable Architecture"],
-      githubUrl: "https://github.com/hrishi-verma/InsightHub",
-      liveUrl: "COMING_SOON",
-      thumbnail: "/thumbnails/insighthub.png"
-    },
-    {
       title: "Personal Portfolio",
       description: "Designed a high-performance portfolio using Next.js 14 and Tailwind CSS. Implemented advanced animations, responsive design, and consolidated academic/project achievements.",
       tech: ["Next.js", "Tailwind CSS", "Framer Motion", "React"],
       highlights: ["Dark Mode", "Responsive Design", "Performance Optimized"],
       githubUrl: "https://github.com/hrishi-verma/portfolio",
-      liveUrl: "https://hrishi-verma.github.io/",
+      liveUrl: "https://hrishikeshverma.com",
       thumbnail: "/thumbnails/portfolio.png"
     },
     {
@@ -174,7 +177,11 @@ export default function Projects() {
                         className="object-cover"
                       />
                     </div>
-                  ) : null}
+                  ) : (
+                    <div className="relative w-full h-64 overflow-hidden bg-gradient-to-br from-blue-600/90 via-purple-600/80 to-gray-900 flex items-center justify-center p-6">
+                      <span className="text-2xl font-bold text-white/95 text-center">{project.title}</span>
+                    </div>
+                  )}
                   <div className="p-6 flex flex-col flex-grow">
                     <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
                       {project.title}

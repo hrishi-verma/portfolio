@@ -14,9 +14,9 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://hrishikeshverma.com'),
-  title: 'Hrishikesh Verma | Software Developer',
-  description: "Full-stack developer and master's student specializing in algorithms, machine learning, and scalable systems. Currently at University of Utah.",
-  keywords: ['software developer', 'full-stack developer', 'machine learning', 'algorithms', 'Next.js', 'React', 'Spring Boot'],
+  title: 'Hrishikesh Verma | Software Engineer',
+  description: "Full-stack software engineer with 3.5+ years building Python/Java backends and React/TypeScript frontends, plus GenAI features with RAG, MCP, and LLM APIs. MS CS, University of Utah.",
+  keywords: ['software engineer', 'full-stack developer', 'GenAI', 'RAG', 'Python', 'Java', 'machine learning', 'algorithms', 'Next.js', 'React', 'Spring Boot'],
   authors: [{ name: 'Hrishikesh Verma' }],
   icons: {
     icon: [
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
     apple: '/favicon.png',
   },
   openGraph: {
-    title: 'Hrishikesh Verma | Software Developer',
-    description: 'Full-stack developer specializing in algorithms, machine learning, and scalable systems',
+    title: 'Hrishikesh Verma | Software Engineer',
+    description: 'Full-stack software engineer building Python/Java backends, React/TypeScript frontends, and GenAI features',
     type: 'website',
   },
 };

@@ -92,7 +92,7 @@ export default function HeroArt() {
       life: number; // Frames remaining
       maxLife: number;
     }
-    let shootingStars: ShootingStar[] = [];
+    const shootingStars: ShootingStar[] = [];
     let timeSinceLastShootingStar = 0;
 
     // --- Interaction ---

@@ -9,7 +9,7 @@ import Contact from '@/components/Contact';
 
 export default function Home() {
   return (
-    <main className="min-h-screen relative z-10">
+    <main className="min-h-screen relative z-10 overflow-x-clip">
       <Hero />
       <About />
       <Skills />

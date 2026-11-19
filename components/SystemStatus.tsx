@@ -1,23 +1,31 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useSyncExternalStore } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Activity, Globe, Clock, Wifi, Minimize2 } from 'lucide-react';
+
+const noopSubscribe = () => () => { };
+
+function subscribeOnline(onChange: () => void) {
+    window.addEventListener('online', onChange);
+    window.addEventListener('offline', onChange);
+    return () => {
+        window.removeEventListener('online', onChange);
+        window.removeEventListener('offline', onChange);
+    };
+}
 
 export default function SystemStatus() {
     const [time, setTime] = useState<string>('');
     const [latency, setLatency] = useState<number>(0);
     const [isExpanded, setIsExpanded] = useState(false);
-    const [isClient, setIsClient] = useState(false);
-    const [isOnline, setIsOnline] = useState(true);
-    const [region, setRegion] = useState<string>('Unknown');
+    // Browser-only values; server snapshots keep hydration consistent
+    const isClient = useSyncExternalStore(noopSubscribe, () => true, () => false);
+    const isOnline = useSyncExternalStore(subscribeOnline, () => navigator.onLine, () => true);
+    const region = useSyncExternalStore(noopSubscribe, () => Intl.DateTimeFormat().resolvedOptions().timeZone, () => 'Unknown');
     const [fps, setFps] = useState<number>(60);
 
     useEffect(() => {
-        setIsClient(true);
-        setRegion(Intl.DateTimeFormat().resolvedOptions().timeZone);
-        setIsOnline(navigator.onLine);
-
         // Update time every second
         const timeInterval = setInterval(() => {
             setTime(new Date().toLocaleTimeString('en-US', {
@@ -32,7 +40,6 @@ export default function SystemStatus() {
         const measurePing = async () => {
             // If browser says offline, believe it and don't try to ping
             if (!navigator.onLine) {
-                setIsOnline(false);
                 setLatency(0);
                 return;
             }
@@ -44,7 +51,7 @@ export default function SystemStatus() {
                 setLatency(Math.round(end - start));
                 // Don't force setIsOnline(true) here, let the event listeners handle it
                 // But if it works, we are definitely connected to server
-            } catch (e) {
+            } catch {
                 // Ping failed
                 setLatency(0);
             }
@@ -55,11 +62,9 @@ export default function SystemStatus() {
 
         // Network Status Listeners
         const handleOnline = () => {
-            setIsOnline(true);
             measurePing(); // Trigger immediate ping check
         };
         const handleOffline = () => {
-            setIsOnline(false);
             setLatency(0);
         };
 
